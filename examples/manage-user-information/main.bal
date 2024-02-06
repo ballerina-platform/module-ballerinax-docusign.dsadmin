@@ -14,15 +14,15 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerinax/docusign.dsadmin;
 import ballerina/io;
+import ballerinax/docusign.dsadmin;
 
 configurable string accessToken = ?;
 configurable string accountId = ?;
 configurable string email = ?;
 
 public function main() returns error? {
-    dsadmin:Client docuSignClient = check new(
+    dsadmin:Client docuSignClient = check new (
         {
             auth: {
                 token: accessToken

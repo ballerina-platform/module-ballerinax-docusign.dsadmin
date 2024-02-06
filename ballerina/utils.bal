@@ -22,13 +22,13 @@ type SimpleBasicType string|boolean|int|float|decimal;
 # Represents encoding mechanism details.
 type Encoding record {
     # Defines how multiple values are delimited
-    string style = FORM;
+    EncodingStyle style = FORM;
     # Specifies whether arrays and objects should generate as separate fields
     boolean explode = true;
     # Specifies the custom content type
     string contentType?;
     # Specifies the custom headers
-    map<any> headers?;
+    map<string> headers?;
 };
 
 enum EncodingStyle {
@@ -176,9 +176,8 @@ isolated function getEncodedUri(anydata value) returns string {
     string|error encoded = url:encode(value.toString(), "UTF8");
     if encoded is string {
         return encoded;
-    } else {
-        return value.toString();
     }
+    return value.toString();
 }
 
 # Generate query path with query parameter.
@@ -213,8 +212,7 @@ isolated function getPathForQueryParam(map<anydata> queryParam, map<Encoding> en
         }
         _ = param.pop();
     }
-    string restOfPath = string:'join("", ...param);
-    return restOfPath;
+    return string:'join("", ...param);
 }
 
 isolated function createBodyParts(record {|anydata...;|} anyRecord, map<Encoding> encodingMap = {}) returns mime:Entity[]|error {
@@ -238,12 +236,10 @@ isolated function createBodyParts(record {|anydata...;|} anyRecord, map<Encoding
         if encodingData?.contentType is string {
             check entity.setContentType(encodingData?.contentType.toString());
         }
-        map<any>? headers = encodingData?.headers;
-        if headers is map<any> {
+        map<string>? headers = encodingData?.headers;
+        if headers is map<string> {
             foreach var [headerName, headerValue] in headers.entries() {
-                if headerValue is SimpleBasicType {
-                    entity.setHeader(headerName, headerValue.toString());
-                }
+                entity.setHeader(headerName, headerValue.toString());
             }
         }
         entities.push(entity);

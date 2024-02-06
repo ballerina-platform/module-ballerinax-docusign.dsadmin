@@ -14,8 +14,8 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/test;
 import ballerina/os;
+import ballerina/test;
 
 Client docuSignClient = test:mock(Client);
 
@@ -26,9 +26,9 @@ configurable string email = ?;
 configurable string accountId = ?;
 
 @test:BeforeSuite
-function initializeClientsForDocuSignServer () returns error? {
+function initializeClientsForDocuSignServer() returns error? {
     if isTestOnLiveServer {
-        docuSignClient = check new(
+        docuSignClient = check new (
             {
                 timeout: 10000,
                 auth: {
@@ -38,7 +38,7 @@ function initializeClientsForDocuSignServer () returns error? {
             serviceUrl = "https://api-d.docusign.net/management/"
         );
     } else {
-        docuSignClient = check new(
+        docuSignClient = check new (
             {
                 timeout: 10000,
                 auth: {
@@ -60,7 +60,7 @@ function testGetOrganizations() returns error? {
     if organizations is () {
         return error("Organizations not found");
     }
-    test:assertEquals(organizations[0].default_account_id , accountId);
+    test:assertEquals(organizations[0].default_account_id, accountId);
 }
 
 @test:Config {
@@ -74,7 +74,7 @@ function testGetUsersInOrganization() returns error? {
     }
     OrganizationResponse organization = organizations[0];
     string organizationId = <string>organization.id;
-    OrganizationUsersResponse organizationResponse = check docuSignClient->/v2/organizations/[organizationId]/users(email=email);
+    OrganizationUsersResponse organizationResponse = check docuSignClient->/v2/organizations/[organizationId]/users(email = email);
     OrganizationUserResponse[]? organizationUsers = organizationResponse.users;
     if organizationUsers is () {
         return error("Users not found");
@@ -232,7 +232,7 @@ function testGetAccountSettingExport() returns error? {
 
     OrganizationExportsResponse getResponse = check docuSignClient->/v2/organizations/[organizationId]/exports/account_settings();
     test:assertNotEquals(getResponse.exports, ());
-    
+
     json deleteResponse = check docuSignClient->/v2/organizations/[organizationId]/exports/user_list/[<string>exportResponse.id].delete();
     test:assertEquals(deleteResponse.success, true);
 }

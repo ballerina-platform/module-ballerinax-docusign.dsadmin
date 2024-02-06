@@ -83,45 +83,45 @@ public type OAuth2RefreshTokenGrantConfig record {|
 
 public type OrganizationAccountSettingsImportResponseArr OrganizationAccountSettingsImportResponse[];
 
-# 
+#
 public type OrgReportListResponse_OrgReport record {
-    # 
+    #
     boolean complete?;
-    # 
+    #
     string report_correlation_id?;
-    # 
+    #
     int:Signed32 site_id?;
-    # 
+    #
     string report_id?;
-    # 
+    #
     OrgReportListResponse_Requestor requestor?;
-    # 
+    #
     string created_on?;
-    # 
+    #
     int:Signed32 account_export_count?;
-    # 
+    #
     string url?;
-    # 
+    #
     string report_type_id?;
-    # 
+    #
     string report_date_range?;
-    # 
+    #
     string custom_start_date?;
-    # 
+    #
     string custom_end_date?;
 };
 
-# 
+#
 public type OASIRR_OrganizationAccountSettingsErrorDataResponse record {
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified.
     string account_id?;
-    # 
+    #
     string account_name?;
     # The error number.
     string 'error?;
-    # 
+    #
     string error_key?;
-    # 
+    #
     string setting_key?;
 };
 
@@ -140,11 +140,11 @@ public type DeleteMembershipsRequest record {
     DeleteMembershipRequest[] accounts;
 };
 
-# 
+#
 public type AddUserResponse record {
-    # 
+    #
     string id?;
-    # 
+    #
     int:Signed32 site_id?;
     # The full name of the user.
     string user_name?;
@@ -155,93 +155,93 @@ public type AddUserResponse record {
     # The email address.
     string email?;
     # The language and culture of the user.
-    # 
-    #   * Chinese Simplified: `zh_CN`
-    #   * Chinese Traditional: `zh_TW`
-    #   * Dutch: `nl`
-    #   * English: `en`
-    #   * French: `fr`
-    #   * German: `de`
-    #   * Italian: `it`
-    #   * Japanese: `ja`
-    #   * Korean: `ko`
-    #   * Portuguese: `pt`
-    #   * Portuguese Brazil: `pt_BR`
-    #   * Russian: `ru`
-    #   * Spanish: `es`
+    #
+    # * Chinese Simplified: `zh_CN`
+    # * Chinese Traditional: `zh_TW`
+    # * Dutch: `nl`
+    # * English: `en`
+    # * French: `fr`
+    # * German: `de`
+    # * Italian: `it`
+    # * Japanese: `ja`
+    # * Korean: `ko`
+    # * Portuguese: `pt`
+    # * Portuguese Brazil: `pt_BR`
+    # * Russian: `ru`
+    # * Spanish: `es`
     string language_culture?;
     # The user's federated status. One of:
-    # 
+    #
     # - `RemoveStatus`
     # - `FedAuthRequired`
     # - `FedAuthBypass`
     # - `Evicted`
     string federated_status?;
-    # 
+    #
     AddUserResponseAccountProperties[] accounts?;
 };
 
-# 
+#
 public type DSGroupAddRequest record {
-    # 
+    #
     string group_name;
-    # 
+    #
     string description?;
 };
 
 # Methods to import users.
 public type SingleAccountUserImport record {
-    # 
+    #
     string id?;
-    # 
+    #
     string 'type?;
-    # 
+    #
     OrganizationImportResponseRequestor requestor?;
-    # 
+    #
     string created?;
-    # 
+    #
     string last_modified?;
     # Status.
     string status?;
-    # 
+    #
     int:Signed32 user_count?;
-    # 
+    #
     int:Signed32 processed_user_count?;
-    # 
+    #
     int:Signed32 added_user_count?;
-    # 
+    #
     int:Signed32 updated_user_count?;
-    # 
+    #
     int:Signed32 closed_user_count?;
-    # 
+    #
     int:Signed32 no_action_required_user_count?;
-    # 
+    #
     int:Signed32 error_count?;
-    # 
+    #
     int:Signed32 warning_count?;
-    # 
+    #
     string invalid_column_headers?;
-    # 
+    #
     string imports_not_found_or_not_available_for_accounts?;
-    # 
+    #
     string imports_failed_for_accounts?;
-    # 
+    #
     string imports_timed_out_for_accounts?;
-    # 
+    #
     string imports_not_found_or_not_available_for_sites?;
-    # 
+    #
     string imports_failed_for_sites?;
-    # 
+    #
     string imports_timed_out_for_sites?;
-    # 
+    #
     OrganizationImportResponseErrorRollup[] file_level_error_rollups?;
-    # 
+    #
     OrganizationImportResponseErrorRollup[] user_level_error_rollups?;
-    # 
+    #
     OrganizationImportResponseWarningRollup[] user_level_warning_rollups?;
-    # 
+    #
     boolean has_csv_results?;
-    # 
+    #
     string results_uri?;
 };
 
@@ -271,21 +271,21 @@ public type NewUserResponseAccountProperties record {
     string job_title?;
 };
 
-# 
+#
 public type UserProductProfileDeleteRequest record {
     # The user's email address.
     string user_email?;
     # The user's unique ID.
     string user_id?;
     # A list of IDs corresponding to the products for which the user's access will be revoked.
-    # 
+    #
     # For example:
-    # 
+    #
     # `["230546a7-xxxx-xxxx-xxxx-af205d5494ad", "984800b7-xxxx-xxxx-xxxx-kt374a5922lk"]`
     string[] product_ids;
 };
 
-# 
+#
 public type IndividualUserDataRedactionRequest record {
     # The ID of the user whose data you want to delete.
     string user_id?;
@@ -293,7 +293,7 @@ public type IndividualUserDataRedactionRequest record {
     MembershipDataRedactionRequest[] memberships?;
 };
 
-# 
+#
 public type OETR_ErrorDetails record {
     # The error number.
     string 'error?;
@@ -301,7 +301,7 @@ public type OETR_ErrorDetails record {
     string error_description?;
 };
 
-# 
+#
 public type ProductPermissionProfilesRequest record {
     # A list of one or more products and their respective permissions.
     ProductPermissionProfileRequest[] product_permission_profiles;
@@ -321,11 +321,11 @@ public type DeleteMembershipResponse record {
     ErrorDetails error_details?;
 };
 
-# 
+#
 public type AddDSGroupUsersResponse record {
-    # 
+    #
     boolean is_success?;
-    # 
+    #
     int:Signed32 TotalCount?;
     # A list of users.
     DSGroupUserResponse[] users?;
@@ -370,15 +370,15 @@ public type OrganizationsResponse record {
 # Enables you to specify the kind of export request.
 public type OrganizationExportRequest record {
     # The type of export requested. One of:
-    # 
+    #
     # - `organization_domain_users_export`: All users of the reserved domains.
     # - `organization_external_memberships_export`: Users whose email address domain is *not* linked to the organization. 
     # - `organization_memberships_export`: Every user in every account in the organization. Users in multiple accounts will appear more than once.
     # - `organization_account_settings_export`: This value only applies to requests to export account settings.
     string 'type?;
-    # 
+    #
     OrganizationExportAccount[] accounts?;
-    # 
+    #
     OrganizationExportDomain[] domains?;
 };
 
@@ -396,7 +396,7 @@ public type DeleteMembershipsResponse record {
     DeleteMembershipResponse[] accounts?;
 };
 
-# 
+#
 public type OrganizationExportTaskResponse record {
     # The unique ID of the task request.
     string id?;
@@ -408,7 +408,7 @@ public type OrganizationExportTaskResponse record {
     int number_rows?;
     # The size of the response in bytes.
     int size_bytes?;
-    # 
+    #
     OETR_ErrorDetails error_details?;
 };
 
@@ -426,9 +426,9 @@ public type UserUpdateResponse record {
 
 # Methods to manage multi-product users in an account.
 public type MultiProductUserManagement record {
-    # 
+    #
     string id?;
-    # 
+    #
     int:Signed32 site_id?;
     # The full name of the user.
     string user_name?;
@@ -439,33 +439,33 @@ public type MultiProductUserManagement record {
     # The email address.
     string email?;
     # The language and culture of the user.
-    # 
-    #   * Chinese Simplified: `zh_CN`
-    #   * Chinese Traditional: `zh_TW`
-    #   * Dutch: `nl`
-    #   * English: `en`
-    #   * French: `fr`
-    #   * German: `de`
-    #   * Italian: `it`
-    #   * Japanese: `ja`
-    #   * Korean: `ko`
-    #   * Portuguese: `pt`
-    #   * Portuguese Brazil: `pt_BR`
-    #   * Russian: `ru`
-    #   * Spanish: `es`
+    #
+    # * Chinese Simplified: `zh_CN`
+    # * Chinese Traditional: `zh_TW`
+    # * Dutch: `nl`
+    # * English: `en`
+    # * French: `fr`
+    # * German: `de`
+    # * Italian: `it`
+    # * Japanese: `ja`
+    # * Korean: `ko`
+    # * Portuguese: `pt`
+    # * Portuguese Brazil: `pt_BR`
+    # * Russian: `ru`
+    # * Spanish: `es`
     string language_culture?;
     # The user's federated status. One of:
-    # 
+    #
     # - `RemoveStatus`
     # - `FedAuthRequired`
     # - `FedAuthBypass`
     # - `Evicted`
     string federated_status?;
-    # 
+    #
     AddUserResponseAccountProperties[] accounts?;
 };
 
-# 
+#
 public type MembershipDataRedactionRequest record {
     # The ID of the account from which to delete the user's data.
     string account_id?;
@@ -494,23 +494,23 @@ public type NewUserResponse record {
     # The primary email address of the user.
     string email?;
     # The language and culture of the user.
-    # 
-    #   * Chinese Simplified: `zh_CN`
-    #   * Chinese Traditional: `zh_TW`
-    #   * Dutch: `nl`
-    #   * English: `en`
-    #   * French: `fr`
-    #   * German: `de`
-    #   * Italian: `it`
-    #   * Japanese: `ja`
-    #   * Korean: `ko`
-    #   * Portuguese: `pt`
-    #   * Portuguese Brazil: `pt_BR`
-    #   * Russian: `ru`
-    #   * Spanish: `es`
+    #
+    # * Chinese Simplified: `zh_CN`
+    # * Chinese Traditional: `zh_TW`
+    # * Dutch: `nl`
+    # * English: `en`
+    # * French: `fr`
+    # * German: `de`
+    # * Italian: `it`
+    # * Japanese: `ja`
+    # * Korean: `ko`
+    # * Portuguese: `pt`
+    # * Portuguese Brazil: `pt_BR`
+    # * Russian: `ru`
+    # * Spanish: `es`
     string language_culture?;
     # The user's federated status. One of:
-    # 
+    #
     # - `RemoveStatus`
     # - `FedAuthRequired`
     # - `FedAuthBypass`
@@ -535,25 +535,25 @@ public type OrganizationSimpleIdObject record {
     string id?;
 };
 
-# 
+#
 public type OrganizationAccountSettingsImportResultResponse record {
-    # 
+    #
     string id?;
-    # 
+    #
     int:Signed32 site_id?;
-    # 
+    #
     string url?;
-    # 
+    #
     int number_processed_accounts?;
-    # 
+    #
     OASIRR_ErrorDetails error_details?;
-    # 
+    #
     OASIRR_OrganizationAccountSettingsErrorDataResponse[] processing_issues_by_account?;
-    # 
+    #
     int number_unprocessed_accounts?;
 };
 
-# 
+#
 public type UserProductPermissionProfilesRequest record {
     # The email address associated with the user whose permissions you want to update. This property is required.
     string email;
@@ -576,27 +576,27 @@ public type NewUserRequest record {
     # The account ID of the user's default account.
     string default_account_id?;
     # The language and culture of the user.
-    # 
-    #   * Chinese Simplified: `zh_CN`
-    #   * Chinese Traditional: `zh_TW`
-    #   * Dutch: `nl`
-    #   * English: `en`
-    #   * French: `fr`
-    #   * German: `de`
-    #   * Italian: `it`
-    #   * Japanese: `ja`
-    #   * Korean: `ko`
-    #   * Portuguese: `pt`
-    #   * Portuguese Brazil: `pt_BR`
-    #   * Russian: `ru`
-    #   * Spanish: `es`
+    #
+    # * Chinese Simplified: `zh_CN`
+    # * Chinese Traditional: `zh_TW`
+    # * Dutch: `nl`
+    # * English: `en`
+    # * French: `fr`
+    # * German: `de`
+    # * Italian: `it`
+    # * Japanese: `ja`
+    # * Korean: `ko`
+    # * Portuguese: `pt`
+    # * Portuguese Brazil: `pt_BR`
+    # * Russian: `ru`
+    # * Spanish: `es`
     string language_culture?;
-    # 
+    #
     string selected_languages?;
     # The access code that the user needs to activate an account.
     string access_code?;
     # The user's federated status. One of:
-    # 
+    #
     # - `RemoveStatus`
     # - `FedAuthRequired`
     # - `FedAuthBypass`
@@ -639,7 +639,7 @@ public type PermissionProfileResponse record {
     # The ID of the permission profile.
     int id?;
     # The name of the permission profile. 
-    # 
+    #
     # Example: `DocuSign Sender`
     string name?;
 };
@@ -656,11 +656,11 @@ public type LinkResponse record {
 public type OrganizationUsersResponse record {
     # A list of users.
     OrganizationUserResponse[] users?;
-    # 
+    #
     PagingResponseProperties paging?;
 };
 
-# 
+#
 public type UserProductPermissionProfilesResponse record {
     # The ID of the user.
     string user_id?;
@@ -674,11 +674,11 @@ public type UserProductPermissionProfilesResponse record {
 public type Organization record {
 };
 
-# 
+#
 public type DSGroupAndUsersResponse record {
-    # 
+    #
     DSGroupResponse group?;
-    # 
+    #
     DSGroupUsersResponse group_users?;
 };
 
@@ -696,29 +696,29 @@ public type ErrorDetails record {
     string error_description?;
 };
 
-# 
+#
 public type DSGroupResponse record {
-    # 
+    #
     string ds_group_id?;
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified.
     string account_id?;
-    # 
+    #
     string source_product_name?;
-    # 
+    #
     string group_id?;
-    # 
+    #
     string group_name?;
-    # 
+    #
     string description?;
-    # 
+    #
     boolean is_admin?;
-    # 
+    #
     string last_modified_on?;
-    # 
+    #
     int:Signed32 user_count?;
-    # 
+    #
     int external_account_id?;
-    # 
+    #
     string account_name?;
 };
 
@@ -726,15 +726,15 @@ public type DSGroupResponse record {
 public type AccountSettingsImport record {
 };
 
-# 
+#
 public type OrganizationExportAccount record {
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified.
     string account_id?;
 };
 
-# 
+#
 public type DSGroupUserResponse record {
-    # 
+    #
     string user_id?;
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified.
     string account_id?;
@@ -744,7 +744,7 @@ public type DSGroupUserResponse record {
     string first_name?;
     # The user's last name.
     string last_name?;
-    # 
+    #
     string middle_name?;
     # Status.
     string status?;
@@ -757,7 +757,7 @@ public type DomainResponse record {
     # The ID of the reserved domain.
     string id?;
     # The status of the request. One of:
-    # 
+    #
     # - `unknown`
     # - `pending`
     # - `active`
@@ -776,69 +776,69 @@ public type DomainResponse record {
     LinkResponse[] links?;
 };
 
-# 
+#
 public type OrganizationImportResponse record {
-    # 
+    #
     string id?;
-    # 
+    #
     string 'type?;
-    # 
+    #
     OrganizationImportResponseRequestor requestor?;
-    # 
+    #
     string created?;
-    # 
+    #
     string last_modified?;
     # Status.
     string status?;
-    # 
+    #
     int:Signed32 user_count?;
-    # 
+    #
     int:Signed32 processed_user_count?;
-    # 
+    #
     int:Signed32 added_user_count?;
-    # 
+    #
     int:Signed32 updated_user_count?;
-    # 
+    #
     int:Signed32 closed_user_count?;
-    # 
+    #
     int:Signed32 no_action_required_user_count?;
-    # 
+    #
     int:Signed32 error_count?;
-    # 
+    #
     int:Signed32 warning_count?;
-    # 
+    #
     string invalid_column_headers?;
-    # 
+    #
     string imports_not_found_or_not_available_for_accounts?;
-    # 
+    #
     string imports_failed_for_accounts?;
-    # 
+    #
     string imports_timed_out_for_accounts?;
-    # 
+    #
     string imports_not_found_or_not_available_for_sites?;
-    # 
+    #
     string imports_failed_for_sites?;
-    # 
+    #
     string imports_timed_out_for_sites?;
-    # 
+    #
     OrganizationImportResponseErrorRollup[] file_level_error_rollups?;
-    # 
+    #
     OrganizationImportResponseErrorRollup[] user_level_error_rollups?;
-    # 
+    #
     OrganizationImportResponseWarningRollup[] user_level_warning_rollups?;
-    # 
+    #
     boolean has_csv_results?;
-    # 
+    #
     string results_uri?;
 };
 
-# 
+#
 public type OrganizationAccountRequest record {
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified.
     string account_id;
 };
 
-# 
+#
 public type RemoveUserProductsResponse record {
     # When **true,** indicates that the user's access to the specified products was successfully revoked.
     boolean is_success;
@@ -847,9 +847,9 @@ public type RemoveUserProductsResponse record {
     # The user's ID.
     string user_id?;
     # The results of the request to revoke product access.
-    # 
+    #
     # Each key in the object is the ID of a product specified in the request. Each corresponding value indicates whether the user's access for that product was successfully revoked. If successful, the value is `deleted`. Otherwise, the value describes the error that occurred.
-    # 
+    #
     # For example:
     # ```
     # {
@@ -864,7 +864,7 @@ public type RemoveUserProductsResponse record {
 public type ESignUserManagement record {
 };
 
-# 
+#
 public type AssetGroupAccountResponse record {
     # The asset group ID.
     string assetGroupId?;
@@ -884,7 +884,7 @@ public type AssetGroupAccountResponse record {
     string siteName?;
 };
 
-# 
+#
 public type CloneErrorDetails record {
     # The error code.
     string 'error?;
@@ -901,7 +901,7 @@ public type SettingResponse record {
     # The value of the setting.
     record {} value?;
     # The type of the setting. One of:
-    # 
+    #
     # - `unknown`
     # - `guid`
     # - `text`
@@ -939,13 +939,13 @@ public type MembershipResponse record {
     boolean is_admin?;
 };
 
-# 
+#
 public type DSGroupUsersResponse record {
     # The page number.
     int:Signed32 page?;
     # The number of items per page.
     int:Signed32 page_size?;
-    # 
+    #
     int:Signed32 total_count?;
     # A list of users.
     DSGroupUserResponse[] users?;
@@ -957,7 +957,7 @@ public type AssetGroupAccountsResponse record {
     AssetGroupAccountResponse[] assetGroupAccounts?;
 };
 
-# 
+#
 public type PagingResponseProperties record {
     # The number of items in a result set (page).
     int:Signed32 result_set_size?;
@@ -973,7 +973,7 @@ public type PagingResponseProperties record {
     string previous?;
 };
 
-# 
+#
 public type OrganizationImportResponseRequestor record {
     # The name of the requestor.
     string name?;
@@ -981,7 +981,7 @@ public type OrganizationImportResponseRequestor record {
     # If `type` is `user`, this is the requestor's user ID.
     string id?;
     # The type of the requestor. One of:
-    # 
+    #
     # - `user`
     # - `client_app`
     string 'type?;
@@ -1004,7 +1004,7 @@ public type UserDrilldownResponse record {
     # The user's last name.
     string last_name?;
     # The user's status. One of:
-    # 
+    #
     # - `active`
     # - `created`
     # - `closed`
@@ -1014,25 +1014,25 @@ public type UserDrilldownResponse record {
     # The name of the user's default account.
     string default_account_name?;
     # The language and culture of the user.
-    # 
-    #   * Chinese Simplified: `zh_CN`
-    #   * Chinese Traditional: `zh_TW`
-    #   * Dutch: `nl`
-    #   * English: `en`
-    #   * French: `fr`
-    #   * German: `de`
-    #   * Italian: `it`
-    #   * Japanese: `ja`
-    #   * Korean: `ko`
-    #   * Portuguese: `pt`
-    #   * Portuguese Brazil: `pt_BR`
-    #   * Russian: `ru`
-    #   * Spanish: `es`
+    #
+    # * Chinese Simplified: `zh_CN`
+    # * Chinese Traditional: `zh_TW`
+    # * Dutch: `nl`
+    # * English: `en`
+    # * French: `fr`
+    # * German: `de`
+    # * Italian: `it`
+    # * Japanese: `ja`
+    # * Korean: `ko`
+    # * Portuguese: `pt`
+    # * Portuguese Brazil: `pt_BR`
+    # * Russian: `ru`
+    # * Spanish: `es`
     string language_culture?;
-    # 
+    #
     string selected_languages?;
     # The user's federated status. One of:
-    # 
+    #
     # - `RemoveStatus`
     # - `FedAuthRequired`
     # - `FedAuthBypass`
@@ -1048,23 +1048,23 @@ public type UserDrilldownResponse record {
     MembershipResponse[] memberships?;
     # A list of identities associated with the user.
     UserIdentityResponse[] identities?;
-    # 
+    #
     boolean device_verification_enabled?;
 };
 
-# 
+#
 public type OrganizationSalesforceAccountManagersResponse record {
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified.
     string account_id?;
-    # 
+    #
     string account_name?;
-    # 
+    #
     string account_type?;
-    # 
+    #
     OSAMR_Contact account_owner?;
-    # 
+    #
     OSAMR_Contact account_manager?;
-    # 
+    #
     OrganizationSalesforceAccountManagersResponse parent_account?;
 };
 
@@ -1075,11 +1075,11 @@ public type AssetGroupAccountCloneTargetAccount record {
     # The name of the target account. This property is required in the request body when cloning an account.
     string name?;
     # The region of the target account. 
-    # 
+    #
     # **Note:** When cloning an account, you must include this property or `countryCode` in the request. If both are provided, `region` will be used.
     string region?;
     # The country code of the target account. The country code for the United States is `en`. 
-    # 
+    #
     # **Note:** When cloning an account, you must include this property or `region`. If both are provided, `region` will be used.
     string countryCode?;
     # The data center site of the account. This property is read-only.
@@ -1092,9 +1092,9 @@ public type AssetGroupAccountCloneTargetAccount record {
 public type UserExport record {
 };
 
-# 
+#
 public type OrganizationAccountsRequest record {
-    # 
+    #
     OrganizationAccountRequest[] accounts?;
 };
 
@@ -1105,7 +1105,7 @@ public type GroupRequest record {
     # The name of the group.
     string name?;
     # The type of group. One of:
-    # 
+    #
     # - `invalid`
     # - `admin_group`
     # - `everyone_group`
@@ -1125,23 +1125,23 @@ public type UpdateUserEmailRequest record {
 
 # Methods to delete data for closed users.
 public type DataDeletion record {
-    # 
+    #
     string user_id?;
     # Status.
     "unknown"|"pending"|"failure"|"success"|"already_redacted" status?;
-    # 
+    #
     MembershipDataRedactionResponse[] membership_results?;
 };
 
-# 
+#
 public type ProductPermissionProfileResponse record {
     # The ID of the product.
     string product_id?;
     # The human-readable name of the product.
     string product_name?;
-    # 
+    #
     PermissionProfileResponse2_1[] permission_profiles?;
-    # 
+    #
     string error_message?;
 };
 
@@ -1169,21 +1169,21 @@ public type DeleteUserIdentityRequest record {
     UserIdentityRequest[] identities;
 };
 
-# 
+#
 public type OrganizationExportDomain record {
-    # 
+    #
     string domain?;
 };
 
-# 
+#
 public type AddDSGroupAndUsersResponse record {
-    # 
+    #
     DSGroupResponse group?;
-    # 
+    #
     AddDSGroupUsersResponse group_users?;
 };
 
-# 
+#
 public type IndividualMembershipDataRedactionRequest record {
     # The ID of the user whose data you want to delete.
     string user_id?;
@@ -1195,7 +1195,7 @@ public type UpdateResponse record {
     string status?;
 };
 
-# 
+#
 public type IndividualUserDataRedactionResponse record {
     # The ID of the user.
     string user_id?;
@@ -1205,23 +1205,23 @@ public type IndividualUserDataRedactionResponse record {
     MembershipDataRedactionResponse[] membership_results?;
 };
 
-# 
+#
 public type DSGroupRequest record {
-    # 
+    #
     string ds_group_id;
 };
 
-# 
+#
 public type OSAMR_Contact record {
-    # 
+    #
     string name?;
     # The email address.
     string email?;
-    # 
+    #
     string title?;
 };
 
-# 
+#
 public type OrganizationImportResponseWarningRollup record {
     # The type of warning.
     string warning_type?;
@@ -1229,7 +1229,7 @@ public type OrganizationImportResponseWarningRollup record {
     int:Signed32 count?;
 };
 
-# 
+#
 public type OASIRR_ErrorDetails record {
     # The error number.
     string 'error?;
@@ -1237,31 +1237,31 @@ public type OASIRR_ErrorDetails record {
     string error_description?;
 };
 
-# 
+#
 public type OrgReportListResponse_Requestor record {
-    # 
+    #
     string id?;
-    # 
+    #
     string name?;
 };
 
-# 
+#
 public type OrganizationImportsResponse record {
     # A list of responses to user import requests.
     OrganizationImportResponse[] imports?;
 };
 
-# 
+#
 public type OrgReportRequest record {
-    # 
+    #
     string report_type?;
-    # 
+    #
     string report_date_range?;
-    # 
+    #
     string[] account_ids?;
-    # 
+    #
     string custom_start_date?;
-    # 
+    #
     string custom_end_date?;
 };
 
@@ -1282,27 +1282,27 @@ public type NewAccountUserRequest record {
     # The account ID of the user's default account.
     string default_account_id?;
     # The language and culture of the user.
-    # 
-    #   * Chinese Simplified: `zh_CN`
-    #   * Chinese Traditional: `zh_TW`
-    #   * Dutch: `nl`
-    #   * English: `en`
-    #   * French: `fr`
-    #   * German: `de`
-    #   * Italian: `it`
-    #   * Japanese: `ja`
-    #   * Korean: `ko`
-    #   * Portuguese: `pt`
-    #   * Portuguese Brazil: `pt_BR`
-    #   * Russian: `ru`
-    #   * Spanish: `es`
+    #
+    # * Chinese Simplified: `zh_CN`
+    # * Chinese Traditional: `zh_TW`
+    # * Dutch: `nl`
+    # * English: `en`
+    # * French: `fr`
+    # * German: `de`
+    # * Italian: `it`
+    # * Japanese: `ja`
+    # * Korean: `ko`
+    # * Portuguese: `pt`
+    # * Portuguese Brazil: `pt_BR`
+    # * Russian: `ru`
+    # * Spanish: `es`
     string language_culture?;
-    # 
+    #
     string selected_languages?;
     # The access code that the user needs to activate an account.
     string access_code?;
     # The user's federated status. One of:
-    # 
+    #
     # - `RemoveStatus`
     # - `FedAuthRequired`
     # - `FedAuthBypass`
@@ -1316,7 +1316,7 @@ public type NewAccountUserRequest record {
 public type MemberGroupsResponse record {
     # A list of the responses.
     MemberGroupResponse[] groups?;
-    # 
+    #
     PagingResponseProperties paging?;
 };
 
@@ -1329,7 +1329,7 @@ public type IdentityProviderResponse record {
     # When **true,** users who use this identity provider are automatically provisioned. 
     boolean auto_provision_users?;
     # The type of the identity provider. One of:
-    # 
+    #
     # - `none`
     # - `saml_20`
     # - `saml_11`
@@ -1431,13 +1431,13 @@ public type OrganizationResponse record {
     LinkResponse[] links?;
 };
 
-# 
+#
 public type OrganizationAccountSettingsImportRequestorResponse record {
-    # 
+    #
     string id?;
-    # 
+    #
     string 'type?;
-    # 
+    #
     string name?;
     # The email address.
     string email?;
@@ -1456,7 +1456,7 @@ public type MemberGroupResponse record {
     # The name of the group.
     string name?;
     # The type of group. One of:
-    # 
+    #
     # - `1 - invalid`
     # - `2 - admin_group`
     # - `3 - everyone_group`
@@ -1481,25 +1481,25 @@ public type UpdateUserRequest record {
     # The account ID of the user's default account.
     string default_account_id?;
     # The language and culture of the user.
-    # 
-    #   * Chinese Simplified: `zh_CN`
-    #   * Chinese Traditional: `zh_TW`
-    #   * Dutch: `nl`
-    #   * English: `en`
-    #   * French: `fr`
-    #   * German: `de`
-    #   * Italian: `it`
-    #   * Japanese: `ja`
-    #   * Korean: `ko`
-    #   * Portuguese: `pt`
-    #   * Portuguese Brazil: `pt_BR`
-    #   * Russian: `ru`
-    #   * Spanish: `es`
+    #
+    # * Chinese Simplified: `zh_CN`
+    # * Chinese Traditional: `zh_TW`
+    # * Dutch: `nl`
+    # * English: `en`
+    # * French: `fr`
+    # * German: `de`
+    # * Italian: `it`
+    # * Japanese: `ja`
+    # * Korean: `ko`
+    # * Portuguese: `pt`
+    # * Portuguese Brazil: `pt_BR`
+    # * Russian: `ru`
+    # * Spanish: `es`
     string language_culture?;
-    # 
+    #
     string selected_languages?;
     # The user's federated status. One of:
-    # 
+    #
     # - `RemoveStatus`
     # - `FedAuthRequired`
     # - `FedAuthBypass`
@@ -1509,11 +1509,11 @@ public type UpdateUserRequest record {
     boolean force_password_change?;
     # A list of group membership requests.
     UpdateMembershipRequest[] memberships?;
-    # 
+    #
     boolean device_verification_enabled?;
 };
 
-# 
+#
 public type ProductPermissionProfilesResponse record {
     # A list of one or more products and their respective permissions.
     ProductPermissionProfileResponse[] product_permission_profiles?;
@@ -1521,7 +1521,7 @@ public type ProductPermissionProfilesResponse record {
 
 # The account that is cloned.
 public type AssetGroupAccountClone record {
-    # 
+    #
     AssetGroupAccountCloneSourceAccount sourceAccount;
     # An object describing the target cloned account.
     AssetGroupAccountCloneTargetAccount targetAccount;
@@ -1554,55 +1554,55 @@ public type AssetGroupAccountClone record {
     string createdByEmail?;
     # A message providing information about the clone request. If the request resulted in an error, this message includes specific information about the error.
     string message?;
-    # 
+    #
     CloneErrorDetails cloneProcessingFailureDetails?;
 };
 
-# 
+#
 public type OrganizationExportsResponse record {
-    # 
+    #
     OrganizationExportResponse[] exports?;
 };
 
-# 
+#
 public type OrgReportConfigurationResponse record {
-    # 
+    #
     boolean is_account_limit_disabled?;
-    # 
+    #
     boolean custom_dates_enabled?;
-    # 
+    #
     int:Signed32[] enabled_report_types?;
 };
 
-# 
+#
 public type DSGroupListResponse record {
     # The page number.
     int:Signed32 page?;
     # The number of items per page.
     int:Signed32 page_size?;
-    # 
+    #
     int:Signed32 total_count?;
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified.
     string account_id?;
-    # 
+    #
     DSGroupResponse[] ds_groups?;
 };
 
-# 
+#
 public type OrganizationExportResponse record {
     # The unique ID of this request.
     string id?;
     # The type of export requested. One of:
-    # 
+    #
     # - `organization_domain_users_export`: All users of the reserved domains.
     # - `organization_external_memberships_export`: Users whose email address domain is *not* linked to the organization. 
     # - `organization_memberships_export`: Every user in every account in the organization. Users in multiple accounts will appear more than once.
     # - `organization_account_settings_export`: This value only applies to requests to export account settings.
     string 'type?;
-    # 
+    #
     OrganizationExportRequestorResponse requestor?;
     # The time and date the request was created. This is a date in ISO 8601 format.
-    # 
+    #
     # Example:  `2019-03-26T19:02:09.8957715Z`
     string created?;
     # The time and date when the request was modified. This is typically the same as `created`.
@@ -1612,15 +1612,15 @@ public type OrganizationExportResponse record {
     # The time and date when the request expires.
     string expires?;
     # The status of the request. One of:
-    # 
+    #
     # - `failed`
     # - `in_process`
     # - `queued`
     # - `completed`
     string status?;
-    # 
+    #
     OrgExportSelectedAccount[] selected_accounts?;
-    # 
+    #
     OrgExportSelectedDomain[] selected_domains?;
     # A pre-configured GET request to get the status of the export. Generally this is the same URI used to access this endpoint.
     string metadata_url?;
@@ -1641,7 +1641,7 @@ public type Bulk_users_update_body record {
     record {byte[] fileContent; string fileName;} file\.csv;
 };
 
-# 
+#
 public type DeleteMembershipRequest record {
     # The ID of a user's account you want to close.
     string id;
@@ -1656,21 +1656,21 @@ public type Bulk_users_update_body_1 record {
 public type IdentityProviders record {
 };
 
-# 
+#
 public type IdentityProvidersResponse record {
-    # 
+    #
     IdentityProviderResponse[] identity_providers?;
 };
 
-# 
+#
 public type AddUserResponseAccountProperties record {
-    # 
+    #
     string id?;
-    # 
+    #
     int:Signed32 site_id?;
     # A list of one or more products and their respective permissions.
     ProductPermissionProfileResponse[] product_permission_profiles?;
-    # 
+    #
     DSGroupResponse[] ds_groups?;
     # The user's company name.
     string company_name?;
@@ -1678,9 +1678,9 @@ public type AddUserResponseAccountProperties record {
     string job_title?;
 };
 
-# 
+#
 public type ForceActivateMembershipRequest record {
-    # 
+    #
     int:Signed32 site_id;
 };
 
@@ -1692,7 +1692,7 @@ public type DSGroupUsersRemoveRequest record {
     string[] user_emails?;
 };
 
-# 
+#
 public type AssetGroupAccountClones record {
     # The list of asset group accounts.
     AssetGroupAccountClone[] assetGroupWorks?;
@@ -1710,13 +1710,13 @@ public type OrganizationAccountResponse record {
     int:Signed32 site_id?;
 };
 
-# 
+#
 public type OrgReportCreateResponse record {
-    # 
+    #
     string report_correlation_id?;
 };
 
-# 
+#
 public type OrgExportSelectedAccount record {
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified.
     string account_id?;
@@ -1726,11 +1726,11 @@ public type OrgExportSelectedAccount record {
 public type ReservedDomains record {
 };
 
-# 
+#
 public type NewMultiProductUserAddRequest record {
     # A list of one or more products and their respective permissions.
     ProductPermissionProfileRequest[] product_permission_profiles;
-    # 
+    #
     DSGroupRequest[] ds_groups?;
     # The full name of the user.
     string user_name?;
@@ -1740,28 +1740,28 @@ public type NewMultiProductUserAddRequest record {
     string last_name?;
     # The email address.
     string email;
-    # 
+    #
     string default_account_id?;
     # The language and culture of the user.
-    # 
-    #   * Chinese Simplified: `zh_CN`
-    #   * Chinese Traditional: `zh_TW`
-    #   * Dutch: `nl`
-    #   * English: `en`
-    #   * French: `fr`
-    #   * German: `de`
-    #   * Italian: `it`
-    #   * Japanese: `ja`
-    #   * Korean: `ko`
-    #   * Portuguese: `pt`
-    #   * Portuguese Brazil: `pt_BR`
-    #   * Russian: `ru`
-    #   * Spanish: `es`
+    #
+    # * Chinese Simplified: `zh_CN`
+    # * Chinese Traditional: `zh_TW`
+    # * Dutch: `nl`
+    # * English: `en`
+    # * French: `fr`
+    # * German: `de`
+    # * Italian: `it`
+    # * Japanese: `ja`
+    # * Korean: `ko`
+    # * Portuguese: `pt`
+    # * Portuguese Brazil: `pt_BR`
+    # * Russian: `ru`
+    # * Spanish: `es`
     string language_culture?;
     # The access code that the user needs to activate an account.
     string access_code?;
     # The user's federated status. One of:
-    # 
+    #
     # - `RemoveStatus`
     # - `FedAuthRequired`
     # - `FedAuthBypass`
@@ -1787,7 +1787,7 @@ public type CertificateResponse record {
     LinkResponse[] links?;
 };
 
-# 
+#
 public type AssetGroupAccountCloneSourceAccount record {
     # The ID of the account to clone. This property is required in POST requests.
     string id;
@@ -1799,7 +1799,7 @@ public type AssetGroupAccountCloneSourceAccount record {
     string name?;
 };
 
-# 
+#
 public type OrganizationExportRequestorResponse record {
     # The name of the requestor.
     string name?;
@@ -1807,7 +1807,7 @@ public type OrganizationExportRequestorResponse record {
     # If `type` is `user`, this is the requestor's user ID.
     string id?;
     # The type of the requestor. One of:
-    # 
+    #
     # - `user`
     # - `client_app`
     string 'type?;
@@ -1815,11 +1815,11 @@ public type OrganizationExportRequestorResponse record {
     string email?;
 };
 
-# 
+#
 public type OrganizationImportResponseErrorRollup record {
     # The type of error. One of:
-    # 
-    # 
+    #
+    #
     # - `no_action_taken_user_exists`
     # - `user_added`
     # - `user_updated`
@@ -1875,41 +1875,41 @@ public type OrganizationImportResponseErrorRollup record {
     int:Signed32 count?;
 };
 
-# 
+#
 public type OrganizationAccountSettingsImportResponse record {
-    # 
+    #
     string created?;
-    # 
+    #
     string last_modified?;
-    # 
+    #
     string completed?;
-    # 
+    #
     string expires?;
-    # 
+    #
     int:Signed32 percent_completed?;
-    # 
+    #
     int number_processed_accounts?;
-    # 
+    #
     int number_unprocessed_accounts?;
-    # 
+    #
     OrganizationAccountSettingsImportResultResponse[] results?;
-    # 
+    #
     boolean success?;
-    # 
+    #
     record {|string[]...;|} skipped_settings_by_account?;
-    # 
+    #
     string id?;
-    # 
+    #
     string organization_id?;
     # Status.
     string status?;
-    # 
+    #
     string 'type?;
-    # 
+    #
     OrganizationAccountSettingsImportRequestorResponse requestor?;
 };
 
-# 
+#
 public type PermissionProfileResponse2_1 record {
     # The ID of the permission profile.
     string permission_profile_id?;
@@ -1928,13 +1928,13 @@ public type OrganizationUserResponse record {
     # The user's last name.
     string last_name?;
     # The user's status. One of:
-    # 
+    #
     # - `active`
     # - `created`
     # - `closed`
     string user_status?;
     # The user's membership status. One of:
-    # 
+    #
     # - `activation_required`
     # - `activation_sent`
     # - `active`
@@ -1947,21 +1947,21 @@ public type OrganizationUserResponse record {
     string created_on?;
     # The date on which the user became a member of the organization.
     string membership_created_on?;
-    # 
+    #
     DSGroupResponse[] ds_groups?;
-    # 
+    #
     string membership_id?;
 };
 
-# 
+#
 public type DSGroupUsersAddRequest record {
-    # 
+    #
     string[] user_ids;
 };
 
-# 
+#
 public type OrgReportListResponse record {
-    # 
+    #
     OrgReportListResponse_OrgReport[] reports?;
 };
 
@@ -1973,20 +1973,19 @@ public type PermissionProfileRequest record {
     string name?;
 };
 
-# 
+#
 public type RemoveDSGroupUsersResponse record {
-    # 
+    #
     boolean is_success?;
-    # 
+    #
     DSGroupUserResponse[] failed_users?;
 };
 
-# 
+#
 public type OrgExportSelectedDomain record {
-    # 
+    #
     string domain?;
 };
-
 
 public type OkNewUserResponse record {|
     *http:Ok;

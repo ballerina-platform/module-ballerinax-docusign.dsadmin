@@ -14,8 +14,8 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerinax/docusign.dsadmin;
 import ballerina/io;
+import ballerinax/docusign.dsadmin;
 
 configurable string accessToken = ?;
 configurable string accountId = ?;
@@ -57,7 +57,7 @@ public function main() returns error? {
         io:println("Error: ", organization);
         return;
     }
-    
+
     dsadmin:NewUserResponse newUserResp = check docusignClient->/v2/organizations/[organizationId]/users.post(newUserReq);
     io:println("New user created: ", newUserResp);
 
