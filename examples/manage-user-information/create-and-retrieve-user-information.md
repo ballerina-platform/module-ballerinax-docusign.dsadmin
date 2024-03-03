@@ -1,8 +1,8 @@
-# DocuSign Admin API: Create and Retrieve User Information
+# Manage user information with DocuSign Admin
 
 This Ballerina program demonstrates the integration of the DocuSign Admin API to create a new user within an organization and retrieve information about that user. The example covers fetching organizations, creating a new user, and retrieving user details.
 
-## Step 1: Import DocuSign Connector
+## Step 1: Import DocuSign connector
 
 Import the `ballerinax/docusign.dsadmin` module into your Ballerina project.
 
@@ -11,7 +11,7 @@ import ballerinax/docusign.dsadmin;
 import ballerina/io;
 ```
 
-## Step 2: Set Up DocuSign Admin Connection
+## Step 2: Setup DocuSign Admin connection
 
 Define configurable parameters such as `accessToken`, `accountId`, and `email` to set up the DocuSign Admin connection.
 
@@ -21,7 +21,7 @@ configurable string accountId = ?;
 configurable string email = ?;
 ```
 
-## Step 3: Create DocuSign Admin Client
+## Step 3: Create DocuSign Admin client
 
 Initialize the DocuSign Admin client with the specified service URL, connection configuration, and account ID.
 
@@ -36,7 +36,7 @@ dsadmin:Client docuSignClient = check new(
 );
 ```
 
-## Step 4: Fetch Organizations
+## Step 4: Fetch organizations
 
 Retrieve information about organizations associated with the provided access token.
 
@@ -45,7 +45,7 @@ dsadmin:OrganizationsResponse orgResponse = check docuSignClient->/v2/organizati
 io:println("Organizations: ", orgResponse);
 ```
 
-## Step 5: Create a New User
+## Step 5: Create a new user
 
 Create a new user within the organization and associate them with the specified account.
 
@@ -79,7 +79,7 @@ dsadmin:NewUserResponse newUserResponse = check docuSignClient->/v2/organization
 io:println("New user created: ", newUserResponse);
 ```
 
-## Step 6: Retrieve User Information
+## Step 6: Retrieve user information
 
 Retrieve information about a specific user within the organization and account.
 
