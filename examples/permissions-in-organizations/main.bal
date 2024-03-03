@@ -15,22 +15,27 @@
 // under the License.
 
 import ballerina/io;
+import ballerina/os;
 import ballerinax/docusign.dsadmin;
 
-configurable string accessToken = ?;
-configurable string accountId = ?;
+configurable string clientId = os:getEnv("CLIENT_ID");
+configurable string clientSecret = os:getEnv("CLIENT_SECRET");
+configurable string refreshToken = os:getEnv("REFRESH_TOKEN");
+configurable string refreshUrl = os:getEnv("REFRESH_URL");
+configurable string accountId = os:getEnv("ACCOUNT_ID");
+configurable string email = os:getEnv("EMAIL");
 
 public function main() returns error? {
-    dsadmin:Client docusignClient = check new (
-        {
-            auth: {
-                token: accessToken
-            }
-        },
-        serviceUrl = "https://api-d.docusign.net/management"
-    );
+    dsadmin:Client docuSignClient = check new ({
+        auth: {
+            clientId,
+            clientSecret,
+            refreshToken,
+            refreshUrl
+        }
+    });
 
-    dsadmin:OrganizationsResponse orgResponse = check docusignClient->/v2/organizations();
+    dsadmin:OrganizationsResponse orgResponse = check docuSignClient->/v2/organizations();
     io:println("Organizations: ", orgResponse);
 
     dsadmin:NewUserRequest newUserReq = {
@@ -47,37 +52,24 @@ public function main() returns error? {
 
     dsadmin:OrganizationResponse[]? organizations = orgResponse.organizations;
     if organizations !is dsadmin:OrganizationResponse[] {
-        io:println("Error: ", orgResponse);
-        return;
+        return error("Organizations are not found");
     }
 
     dsadmin:OrganizationResponse organization = organizations[0];
     string? organizationId = organization.id;
-    if organizationId == () {
-        io:println("Error: ", organization);
-        return;
+    if organizationId is () {
+        return error("Organization id not found");
     }
 
-    dsadmin:NewUserResponse newUserResp = check docusignClient->/v2/organizations/[organizationId]/users.post(newUserReq);
+    dsadmin:NewUserResponse newUserResp = check docuSignClient->/v2/organizations/[organizationId]/users.post(newUserReq);
     io:println("New user created: ", newUserResp);
 
-    dsadmin:OrganizationUsersResponse userInformation = check docusignClient->/v2/organizations/[organizationId]/users(account_id = accountId, email = "user1@docusignmail.com");
+    dsadmin:OrganizationUsersResponse userInformation = check docuSignClient->/v2/organizations/[organizationId]/users(account_id = accountId, email = email);
     io:println("User Information in the Organization: ", userInformation);
 
-    dsadmin:PermissionsResponse permissionsResponse = check docusignClient->/v2/organizations/[organizationId]/accounts/[accountId]/permissions();
+    dsadmin:PermissionsResponse permissionsResponse = check docuSignClient->/v2/organizations/[organizationId]/accounts/[accountId]/permissions();
     io:println("Permission Profiles: ", permissionsResponse);
 
-    dsadmin:MemberGroupsResponse groupsResponse = check docusignClient->/v2/organizations/[organizationId]/accounts/[accountId]/groups();
+    dsadmin:MemberGroupsResponse groupsResponse = check docuSignClient->/v2/organizations/[organizationId]/accounts/[accountId]/groups();
     io:println("Groups: ", groupsResponse);
-}
-
-function printOrganizations(dsadmin:OrganizationResponse[]? organizations) {
-    if organizations is dsadmin:OrganizationResponse[] {
-        io:println("Organizations:");
-        foreach var org in organizations {
-            io:println("  ID: ", org.id, ", Name: ", org.name);
-        }
-    } else {
-        io:println("Error fetching organizations");
-    }
 }

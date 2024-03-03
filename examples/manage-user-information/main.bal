@@ -15,36 +15,39 @@
 // under the License.
 
 import ballerina/io;
+import ballerina/os;
 import ballerinax/docusign.dsadmin;
 
-configurable string accessToken = ?;
-configurable string accountId = ?;
-configurable string email = ?;
+configurable string clientId = os:getEnv("CLIENT_ID");
+configurable string clientSecret = os:getEnv("CLIENT_SECRET");
+configurable string refreshToken = os:getEnv("REFRESH_TOKEN");
+configurable string refreshUrl = os:getEnv("REFRESH_URL");
+configurable string accountId = os:getEnv("ACCOUNT_ID");
+configurable string userId = os:getEnv("USER_ID");
+configurable string email = os:getEnv("EMAIL");
 
 public function main() returns error? {
-    dsadmin:Client docuSignClient = check new (
-        {
-            auth: {
-                token: accessToken
-            }
-        },
-        serviceUrl = "https://api-d.docusign.net/management"
-    );
+    dsadmin:Client docuSignClient = check new ({
+        auth: {
+            clientId,
+            clientSecret,
+            refreshToken,
+            refreshUrl
+        }
+    });
 
     dsadmin:OrganizationsResponse orgResponse = check docuSignClient->/v2/organizations();
     io:println("Organizations: ", orgResponse);
 
     dsadmin:OrganizationResponse[]? organizations = orgResponse.organizations;
     if organizations !is dsadmin:OrganizationResponse[] {
-        io:println("Error: organizations not found");
-        return;
+        return error("Organizations are not found");
     }
 
     dsadmin:OrganizationResponse organization = organizations[0];
     string? organizationId = organization.id;
-    if organizationId == () {
-        io:println("Error: organization id not found");
-        return;
+    if organizationId is () {
+        return error("Organization id not found");
     }
 
     dsadmin:NewUserRequest newUserReq = {
@@ -63,9 +66,8 @@ public function main() returns error? {
     io:println("New user created: ", newUserResponse);
 
     string? userId = newUserResponse.id;
-    if userId == () {
-        io:println("Error: user id not found");
-        return;
+    if userId is () {
+        return error("User id not found");
     }
 
     dsadmin:OrganizationUsersResponse userInformation = check docuSignClient->/v2/organizations/[organizationId]/users(account_id = accountId, email = email);
