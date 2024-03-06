@@ -96,7 +96,6 @@ You can now utilize the operations available within the connector.
 
 ```ballerina
 public function main() returns error? {
-    dsadmin:Client docuSignClient = ...// instantiates the DocuSign Click client
 
     dsadmin:OrganizationsResponse orgResponse = check docuSignClient->/v2/organizations();
     io:println("Organizations: ", orgResponse);
