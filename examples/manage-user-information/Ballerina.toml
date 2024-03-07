@@ -4,5 +4,11 @@ name = "manage_user_information"
 version = "0.1.0"
 distribution = "2201.8.3"
 
+[[dependency]]
+org = "ballerinax"
+name = "docusign.dsadmin"
+version = "1.0.0"
+repository = "local"
+
 [build-options]
 observabilityIncluded = true
