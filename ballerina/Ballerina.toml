@@ -1,0 +1,16 @@
+[package]
+distribution = "2201.8.4"
+org = "ballerinax"
+name = "docusign.dsadmin"
+version = "1.0.0"
+license = ["Apache-2.0"]
+authors = ["Ballerina"]
+keywords = ["eSignature", "Cost/Freemium", "Administration", "Collaboration", "Digital Signature"]
+icon = "icon.png"
+repository = "https://github.com/ballerina-platform/module-ballerinax-docusign"
+
+[build-options]
+observabilityIncluded = true
+
+[platform.java17]
+graalvmCompatible = true
