@@ -1,0 +1,8 @@
+[docusign.dsadmin]
+clientId = "mock-client-id"
+clientSecret = "mock-client-secret"
+refreshToken = "mock-refresh-token"
+refreshUrl = "http://localhost:9444/oauth2/token"
+accountId = "mock-account-id"
+userId = "mock-user-id"
+email = "mock-user@testmail.com"
