@@ -25,16 +25,20 @@ configurable string refreshUrl = os:getEnv("REFRESH_URL");
 configurable string accountId = os:getEnv("ACCOUNT_ID");
 configurable string userId = os:getEnv("USER_ID");
 configurable string email = os:getEnv("EMAIL");
+configurable string serviceUrl = os:getEnv("SERVICE_URL");
 
 public function main() returns error? {
-    dsadmin:Client docuSignClient = check new ({
-        auth: {
-            clientId,
-            clientSecret,
-            refreshToken,
-            refreshUrl
+    dsadmin:Client docuSignClient = check new (
+        serviceUrl,
+        {
+            auth: {
+                clientId,
+                clientSecret,
+                refreshToken,
+                refreshUrl
+            }
         }
-    });
+    );
 
     dsadmin:OrganizationsResponse orgResponse = check docuSignClient->/v2/organizations();
     io:println("Organizations: ", orgResponse);

@@ -31,7 +31,7 @@ configurable string email = ?;
 @test:BeforeSuite
 function initializeClientsForDocuSignServer() returns error? {
     if isTestOnLiveServer {
-        docuSignClient = check new(
+        docuSignClient = check new("https://api-d.docusign.net/management/",
             {
                 timeout: 10000,
                 auth: {
@@ -40,11 +40,10 @@ function initializeClientsForDocuSignServer() returns error? {
                     refreshToken: os:getEnv("REFRESH_TOKEN"),
                     refreshUrl: os:getEnv("REFRESH_URL")
                 }
-            },
-            serviceUrl = "https://api-d.docusign.net/management/"
+            }
         );
     } else {
-        docuSignClient = check new(
+        docuSignClient = check new("http://localhost:9090/management",
             {
                 timeout: 10000,
                 auth: {
@@ -53,8 +52,7 @@ function initializeClientsForDocuSignServer() returns error? {
                     refreshToken,
                     refreshUrl
                 }
-            },
-            serviceUrl = "http://localhost:9090/management"
+            }
         );
     }
 }
