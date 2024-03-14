@@ -10,7 +10,7 @@ The DocuSign Admin connector provides practical examples illustrating usage in v
 
 ## Prerequisites
 
-1. Follow the [instructions](https://github.com/ballerina-platform/module-ballerinax-docusign.dsadmin#set-up-guide) to set up the DocuSign Click API.
+1. Follow the [instructions](https://github.com/ballerina-platform/module-ballerinax-docusign.dsadmin#set-up-guide) to set up the DocuSign Admin API.
 
 2. For each example, create a `Config.toml` file with your OAuth2 tokens, client ID, and client secret. Here's an example of how your `Config.toml` file should look:
 

@@ -7,15 +7,9 @@
 [![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/docusign.dsadmin.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%2Fdocusign.dsadmin)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-The DocuSign Admin connector can be used for managing user permissions in accounts and domains. The connector enables you to streamline administrative tasks, ensuring smooth user management and permissions control for enhanced governance.
+DocuSign is a digital transaction management platform that enables users to securely sign, send, and manage documents electronically.
 
-- [docusign.dsadmin](ballerina/Module.md) - Perform DocuSign Admin related operations
-
-## Overview
-
-The Ballerina Docusign Admin Connector efficiently manages DocuSign users and permissions across all your accounts and domains
-
-The Ballerina Docusign Admin module supports [DocuSign Admin API V2](https://github.com/docusign/OpenAPI-Specifications/blob/master/admin.rest.swagger-v2.1.json).
+The Ballerina DocuSign Admin connector integrates with the DocuSign platform, provides APIs to efficiently manages DocuSign users and permissions across all the accounts and domains within Ballerina applications. It supports [DocuSign Admin API V2](https://github.com/docusign/OpenAPI-Specifications/blob/master/admin.rest.swagger-v2.1.json).
 
 ## Setup guide
 

@@ -1,8 +1,8 @@
 ## Overview
 
-The Ballerina Docusign Admin Connector efficiently manages DocuSign users and permissions across all your accounts and domains
+DocuSign is a digital transaction management platform that enables users to securely sign, send, and manage documents electronically.
 
-The Ballerina Docusign Admin module supports [DocuSign Admin API V2](https://github.com/docusign/OpenAPI-Specifications/blob/master/admin.rest.swagger-v2.1.json).
+The Ballerina DocuSign Admin connector integrates with the DocuSign platform, provides APIs to efficiently manages DocuSign users and permissions across all the accounts and domains within Ballerina applications. It supports [DocuSign Admin API V2](https://github.com/docusign/OpenAPI-Specifications/blob/master/admin.rest.swagger-v2.1.json).
 
 ## Setup guide
 
