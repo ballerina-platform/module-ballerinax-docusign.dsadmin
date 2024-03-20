@@ -9,9 +9,6 @@
 Config.toml
 **/Config.toml
 
-# Modules
-/modules/docusign.dsadmin
-
 # BlueJ files
 *.ctxt
 
