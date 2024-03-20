@@ -10,7 +10,7 @@ Config.toml
 **/Config.toml
 
 # Modules
-/modules/googleapis.docusign.dsadmin
+/modules/docusign.dsadmin
 
 # BlueJ files
 *.ctxt
