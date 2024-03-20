@@ -1,6 +1,6 @@
 ## Overview
 
-DocuSign is a digital transaction management platform that enables users to securely sign, send, and manage documents electronically.
+[DocuSign](https://www.docusign.com) is a digital transaction management platform that enables users to securely sign, send, and manage documents electronically.
 
 The Ballerina DocuSign Admin connector integrates with the DocuSign platform, provides APIs to efficiently manages DocuSign users and permissions across all the accounts and domains within Ballerina applications. It supports [DocuSign Admin API V2](https://github.com/docusign/OpenAPI-Specifications/blob/master/admin.rest.swagger-v2.1.json).
 
