@@ -16,6 +16,7 @@
 
 import ballerina/http;
 import ballerina/mime;
+import ballerina/data.jsondata;
 
 # An API for an organization administrator to manage organizations, accounts and users
 public isolated client class Client {
@@ -49,7 +50,7 @@ public isolated client class Client {
     resource isolated function post v2/data_redaction/accounts/[string accountId]/user(IndividualMembershipDataRedactionRequest payload, map<string|string[]> headers = {}) returns IndividualUserDataRedactionResponse|error {
         string resourcePath = string `/v2/data_redaction/accounts/${getEncodedUri(accountId)}/user`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -96,7 +97,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/exports/user_list(OrganizationExportRequest payload, map<string|string[]> headers = {}) returns OrganizationExportResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/exports/user_list`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -119,7 +120,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/exports/account_settings(OrganizationAccountsRequest payload, map<string|string[]> headers = {}) returns OrganizationExportResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/exports/account_settings`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -354,7 +355,7 @@ public isolated client class Client {
     resource isolated function post v2/data_redaction/organizations/[string organizationId]/user(IndividualUserDataRedactionRequest payload, map<string|string[]> headers = {}) returns IndividualUserDataRedactionResponse|error {
         string resourcePath = string `/v2/data_redaction/organizations/${getEncodedUri(organizationId)}/user`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -377,7 +378,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/users/profiles(UpdateUsersRequest payload, map<string|string[]> headers = {}) returns UsersUpdateResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/users/profiles`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -390,7 +391,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/users/email_addresses(UpdateUsersEmailRequest payload, map<string|string[]> headers = {}) returns UsersUpdateResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/users/email_addresses`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -404,7 +405,7 @@ public isolated client class Client {
     resource isolated function delete v2/organizations/[string organizationId]/users/[string userId]/accounts(DeleteMembershipsRequest payload, map<string|string[]> headers = {}) returns DeleteMembershipsResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/users/${getEncodedUri(userId)}/accounts`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->delete(resourcePath, request, headers);
     }
@@ -429,7 +430,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/users(NewUserRequest payload, map<string|string[]> headers = {}) returns NewUserResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/users`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -444,7 +445,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/users/[string userId]/memberships/[string membershipId](ForceActivateMembershipRequest payload, map<string|string[]> headers = {}) returns UpdateResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/users/${getEncodedUri(userId)}/memberships/${getEncodedUri(membershipId)}`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -470,7 +471,7 @@ public isolated client class Client {
     resource isolated function delete v2/organizations/[string organizationId]/users/[string userId]/identities(DeleteUserIdentityRequest payload, map<string|string[]> headers = {}) returns DeleteResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/users/${getEncodedUri(userId)}/identities`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->delete(resourcePath, request, headers);
     }
@@ -484,7 +485,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/accounts/[string accountId]/users(NewAccountUserRequest payload, map<string|string[]> headers = {}) returns NewUserResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/users`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -498,7 +499,7 @@ public isolated client class Client {
     resource isolated function post v2\.1/organizations/[string organizationId]/accounts/[string accountId]/dsgroups(DSGroupAddRequest payload, map<string|string[]> headers = {}) returns DSGroupResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/dsgroups`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -522,7 +523,7 @@ public isolated client class Client {
     resource isolated function post v2\.1/organizations/[string organizationId]/accounts/[string accountId]/dsgroups/[string dsGroupId]/users(DSGroupUsersAddRequest payload, map<string|string[]> headers = {}) returns AddDSGroupAndUsersResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/dsgroups/${getEncodedUri(dsGroupId)}/users`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -530,7 +531,7 @@ public isolated client class Client {
     resource isolated function delete v2\.1/organizations/[string organizationId]/accounts/[string accountId]/dsgroups/[string dsGroupId]/users(DSGroupUsersRemoveRequest payload, map<string|string[]> headers = {}) returns RemoveDSGroupUsersResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/dsgroups/${getEncodedUri(dsGroupId)}/users`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->delete(resourcePath, request, headers);
     }
@@ -548,7 +549,7 @@ public isolated client class Client {
     resource isolated function post v2\.1/organizations/[string organizationId]/accounts/[string accountId]/products/users/[string userId]/permission_profiles(ProductPermissionProfilesRequest payload, map<string|string[]> headers = {}) returns UserProductPermissionProfilesResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/products/users/${getEncodedUri(userId)}/permission_profiles`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -556,7 +557,7 @@ public isolated client class Client {
     resource isolated function post v2\.1/organizations/[string organizationId]/accounts/[string accountId]/users(NewMultiProductUserAddRequest payload, map<string|string[]> headers = {}) returns AddUserResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/users`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -576,7 +577,7 @@ public isolated client class Client {
     resource isolated function delete v2\.1/organizations/[string organizationId]/accounts/[string accountId]/products/users(UserProductProfileDeleteRequest payload, map<string|string[]> headers = {}) returns RemoveUserProductsResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/products/users`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->delete(resourcePath, request, headers);
     }
@@ -590,7 +591,7 @@ public isolated client class Client {
     resource isolated function post v2\.1/organizations/[string organizationId]/accounts/[string accountId]/products/permission_profiles/users(UserProductPermissionProfilesRequest payload, map<string|string[]> headers = {}) returns UserProductPermissionProfilesResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/products/permission_profiles/users`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -615,7 +616,7 @@ public isolated client class Client {
     resource isolated function post v1/organizations/[string organizationId]/assetGroups/accountClone(AssetGroupAccountClone payload, map<string|string[]> headers = {}) returns AssetGroupAccountClone|error {
         string resourcePath = string `/v1/organizations/${getEncodedUri(organizationId)}/assetGroups/accountClone`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }

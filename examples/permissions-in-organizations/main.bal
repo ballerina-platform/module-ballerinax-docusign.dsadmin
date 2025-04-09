@@ -28,7 +28,6 @@ configurable string serviceUrl = os:getEnv("SERVICE_URL");
 
 public function main() returns error? {
     dsadmin:Client docuSignClient = check new (
-        serviceUrl,
         {
             auth: {
                 clientId,
@@ -36,20 +35,21 @@ public function main() returns error? {
                 refreshToken,
                 refreshUrl
             }
-        }
+        },
+        serviceUrl
     );
 
     dsadmin:OrganizationsResponse orgResponse = check docuSignClient->/v2/organizations();
     io:println("Organizations: ", orgResponse);
 
     dsadmin:NewUserRequest newUserReq = {
-        user_name: "user1",
-        first_name: "name1",
+        userName: "user1",
+        firstName: "name1",
         email: "user1@docusignmail.com",
         accounts: [
             {
                 id: accountId,
-                company_name: "Company"
+                companyName: "Company"
             }
         ]
     };
@@ -68,7 +68,7 @@ public function main() returns error? {
     dsadmin:NewUserResponse newUserResp = check docuSignClient->/v2/organizations/[organizationId]/users.post(newUserReq);
     io:println("New user created: ", newUserResp);
 
-    dsadmin:OrganizationUsersResponse userInformation = check docuSignClient->/v2/organizations/[organizationId]/users(account_id = accountId, email = email);
+    dsadmin:OrganizationUsersResponse userInformation = check docuSignClient->/v2/organizations/[organizationId]/users(accountId = accountId, email = email);
     io:println("User Information in the Organization: ", userInformation);
 
     dsadmin:PermissionsResponse permissionsResponse = check docuSignClient->/v2/organizations/[organizationId]/accounts/[accountId]/permissions();

@@ -31,7 +31,7 @@ configurable string email = ?;
 @test:BeforeSuite
 function initializeClientsForDocuSignServer() returns error? {
     if isTestOnLiveServer {
-        docuSignClient = check new("https://api-d.docusign.net/management/",
+        docuSignClient = check new(
             {
                 timeout: 10000,
                 auth: {
@@ -40,10 +40,11 @@ function initializeClientsForDocuSignServer() returns error? {
                     refreshToken: os:getEnv("REFRESH_TOKEN"),
                     refreshUrl: os:getEnv("REFRESH_URL")
                 }
-            }
+            },
+            "https://api-d.docusign.net/management/"
         );
     } else {
-        docuSignClient = check new("http://localhost:9090/management",
+        docuSignClient = check new(
             {
                 timeout: 10000,
                 auth: {
@@ -52,7 +53,8 @@ function initializeClientsForDocuSignServer() returns error? {
                     refreshToken,
                     refreshUrl
                 }
-            }
+            },
+            "http://localhost:9090/management"
         );
     }
 }
@@ -67,7 +69,7 @@ function testGetOrganizations() returns error? {
     if organizations is () {
         return error("Organizations not found");
     }
-    test:assertEquals(organizations[0].default_account_id, accountId);
+    test:assertEquals(organizations[0].defaultAccountId, accountId);
 }
 
 @test:Config {
@@ -142,7 +144,7 @@ function testGetUserInfo() returns error? {
     if users is () {
         return error("Users not found");
     }
-    test:assertEquals(users[0].default_account_id, accountId);
+    test:assertEquals(users[0].defaultAccountId, accountId);
 }
 
 @test:Config {
@@ -205,15 +207,15 @@ function testCreateAndDeleteAccountSettingsExport() returns error? {
     OrganizationExportResponse exportResponse = check docuSignClient->/v2/organizations/[organizationId]/exports/account_settings.post({
         accounts: [
             {
-                account_id: accountId
+                accountId
             }
         ]
     });
     OrganizationExportRequestorResponse exportRes = <OrganizationExportRequestorResponse>exportResponse.requestor;
     test:assertEquals(exportRes.email, email);
 
-    json deleteResponse = check docuSignClient->/v2/organizations/[organizationId]/exports/user_list/[<string>exportResponse.id].delete();
-    test:assertEquals(deleteResponse.success, true);
+    record {}|error deleteResponse = docuSignClient->/v2/organizations/[organizationId]/exports/user_list/[<string>exportResponse.id].delete();
+    test:assertTrue(deleteResponse !is error);
 }
 
 @test:Config {
@@ -230,7 +232,7 @@ function testGetAccountSettingExport() returns error? {
     OrganizationExportResponse exportResponse = check docuSignClient->/v2/organizations/[organizationId]/exports/account_settings.post({
         accounts: [
             {
-                account_id: accountId
+                accountId: accountId
             }
         ]
     });
@@ -240,6 +242,6 @@ function testGetAccountSettingExport() returns error? {
     OrganizationExportsResponse getResponse = check docuSignClient->/v2/organizations/[organizationId]/exports/account_settings();
     test:assertNotEquals(getResponse.exports, ());
 
-    json deleteResponse = check docuSignClient->/v2/organizations/[organizationId]/exports/user_list/[<string>exportResponse.id].delete();
-    test:assertEquals(deleteResponse.success, true);
+    record {}|error deleteResponse = docuSignClient->/v2/organizations/[organizationId]/exports/user_list/[<string>exportResponse.id].delete();
+    test:assertTrue(deleteResponse !is error);
 }
