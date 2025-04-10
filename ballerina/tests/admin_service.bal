@@ -25,8 +25,8 @@ service /management on new http:Listener(9090) {
         OrganizationsResponse organizationsResponse = {
             organizations: [
                 {
-                    id: "organization-id",
-                    default_account_id: accountId
+                    id: "organizationId",
+                    defaultAccountId: accountId
                 }
             ]
         };
@@ -49,7 +49,7 @@ service /management on new http:Listener(9090) {
         UsersDrilldownResponse response = {
             users: [
                 {
-                    default_account_id: accountId
+                    defaultAccountId: accountId
                 }
             ]
         };
@@ -106,6 +106,11 @@ service /management on new http:Listener(9090) {
 
     resource isolated function post v2/organizations/[string organizationId]/exports/account_settings(OrganizationAccountsRequest payload) returns OrganizationExportResponse|error {
         OrganizationExportResponse response = {
+            selectedAccounts: [
+                {
+                    accountId
+                }
+            ],
             id: accountId,
             requestor: {
                 email: email
@@ -120,9 +125,9 @@ service /management on new http:Listener(9090) {
         };
     }
 
-    resource isolated function delete v2/organizations/[string organizationId]/exports/user_list/[string exportId]() returns json|error {
+    resource isolated function delete v2/organizations/[string organizationId]/exports/user_list/[string exportId]() returns record {}|error {
         return {
-            success: true
+            "success": true
         };
     }
 }
