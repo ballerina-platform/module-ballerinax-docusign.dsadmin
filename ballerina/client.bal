@@ -14,9 +14,9 @@
 // specific language governing permissions and limitations
 // under the License.
 
+import ballerina/data.jsondata;
 import ballerina/http;
 import ballerina/mime;
-import ballerina/data.jsondata;
 
 # An API for an organization administrator to manage organizations, accounts and users
 public isolated client class Client {
@@ -187,7 +187,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/imports/account_settings(ImportsAccountSettingsBody payload, map<string|string[]> headers = {}) returns OrganizationAccountSettingsImportResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/imports/account_settings`;
         http:Request request = new;
-        mime:Entity[] bodyParts = check createBodyParts(payload);
+        mime:Entity[] bodyParts = check createBodyParts(check jsondata:toJson(payload).ensureType());
         request.setBodyParts(bodyParts);
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -222,7 +222,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/imports/bulk_users/add(BulkUsersAddBody payload, map<string|string[]> headers = {}) returns OrganizationImportResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/imports/bulk_users/add`;
         http:Request request = new;
-        mime:Entity[] bodyParts = check createBodyParts(payload);
+        mime:Entity[] bodyParts = check createBodyParts(check jsondata:toJson(payload).ensureType());
         request.setBodyParts(bodyParts);
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -236,7 +236,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/accounts/[string accountId]/imports/bulk_users/add(BulkUsersAddBody1 payload, map<string|string[]> headers = {}) returns OrganizationImportResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/imports/bulk_users/add`;
         http:Request request = new;
-        mime:Entity[] bodyParts = check createBodyParts(payload);
+        mime:Entity[] bodyParts = check createBodyParts(check jsondata:toJson(payload).ensureType());
         request.setBodyParts(bodyParts);
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -249,7 +249,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/imports/bulk_users/update(BulkUsersUpdateBody payload, map<string|string[]> headers = {}) returns OrganizationImportResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/imports/bulk_users/update`;
         http:Request request = new;
-        mime:Entity[] bodyParts = check createBodyParts(payload);
+        mime:Entity[] bodyParts = check createBodyParts(check jsondata:toJson(payload).ensureType());
         request.setBodyParts(bodyParts);
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -264,7 +264,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/accounts/[string accountId]/imports/bulk_users/update(BulkUsersUpdateBody1 payload, map<string|string[]> headers = {}) returns OrganizationImportResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/imports/bulk_users/update`;
         http:Request request = new;
-        mime:Entity[] bodyParts = check createBodyParts(payload);
+        mime:Entity[] bodyParts = check createBodyParts(check jsondata:toJson(payload).ensureType());
         request.setBodyParts(bodyParts);
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -277,7 +277,7 @@ public isolated client class Client {
     resource isolated function post v2/organizations/[string organizationId]/imports/bulk_users/close(BulkUsersCloseBody payload, map<string|string[]> headers = {}) returns OrganizationImportResponse|error {
         string resourcePath = string `/v2/organizations/${getEncodedUri(organizationId)}/imports/bulk_users/close`;
         http:Request request = new;
-        mime:Entity[] bodyParts = check createBodyParts(payload);
+        mime:Entity[] bodyParts = check createBodyParts(check jsondata:toJson(payload).ensureType());
         request.setBodyParts(bodyParts);
         return self.clientEp->post(resourcePath, request, headers);
     }
