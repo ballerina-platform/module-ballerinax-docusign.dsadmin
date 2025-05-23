@@ -490,12 +490,25 @@ public isolated client class Client {
         return self.clientEp->post(resourcePath, request, headers);
     }
 
+    # Returns a list of DSGroups.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + headers - Headers to be sent with the request 
+    # + queries - Queries to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function get v2\.1/organizations/[string organizationId]/accounts/[string accountId]/dsgroups(map<string|string[]> headers = {}, *DocuSignGroupsv21GetDSGroupsV21Queries queries) returns DSGroupListResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/dsgroups`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
     }
 
+    # Creates a new DSGroup.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + headers - Headers to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function post v2\.1/organizations/[string organizationId]/accounts/[string accountId]/dsgroups(DSGroupAddRequest payload, map<string|string[]> headers = {}) returns DSGroupResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/dsgroups`;
         http:Request request = new;
@@ -504,22 +517,51 @@ public isolated client class Client {
         return self.clientEp->post(resourcePath, request, headers);
     }
 
+    # Returns details about a single DSGroup.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + dsGroupId - The DSGroup's ID GUID
+    # + headers - Headers to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function get v2\.1/organizations/[string organizationId]/accounts/[string accountId]/dsgroups/[string dsGroupId](map<string|string[]> headers = {}) returns DSGroupResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/dsgroups/${getEncodedUri(dsGroupId)}`;
         return self.clientEp->get(resourcePath, headers);
     }
 
+    # Deletes a DSGroup.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + dsGroupId - The DSGroup's GUID
+    # + headers - Headers to be sent with the request 
+    # + return - No Content 
     resource isolated function delete v2\.1/organizations/[string organizationId]/accounts/[string accountId]/dsgroups/[string dsGroupId](map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/dsgroups/${getEncodedUri(dsGroupId)}`;
         return self.clientEp->delete(resourcePath, headers = headers);
     }
 
+    # Gets a list of users in a DSGroup.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + dsGroupId - The DSGroup's GUID
+    # + headers - Headers to be sent with the request 
+    # + queries - Queries to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function get v2\.1/organizations/[string organizationId]/accounts/[string accountId]/dsgroups/[string dsGroupId]/users(map<string|string[]> headers = {}, *DocuSignGroupsv21GetDSGroupUsersV21Queries queries) returns DSGroupAndUsersResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/dsgroups/${getEncodedUri(dsGroupId)}/users`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
     }
 
+    # Adds a list of users to a DSGroup.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + dsGroupId - The DSGroup's GUID
+    # + headers - Headers to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function post v2\.1/organizations/[string organizationId]/accounts/[string accountId]/dsgroups/[string dsGroupId]/users(DSGroupUsersAddRequest payload, map<string|string[]> headers = {}) returns AddDSGroupAndUsersResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/dsgroups/${getEncodedUri(dsGroupId)}/users`;
         http:Request request = new;
@@ -528,6 +570,13 @@ public isolated client class Client {
         return self.clientEp->post(resourcePath, request, headers);
     }
 
+    # Removes a list of users from a DSGroup.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + dsGroupId - The DSGroup's GUID
+    # + headers - Headers to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function delete v2\.1/organizations/[string organizationId]/accounts/[string accountId]/dsgroups/[string dsGroupId]/users(DSGroupUsersRemoveRequest payload, map<string|string[]> headers = {}) returns RemoveDSGroupUsersResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/dsgroups/${getEncodedUri(dsGroupId)}/users`;
         http:Request request = new;
@@ -536,16 +585,36 @@ public isolated client class Client {
         return self.clientEp->delete(resourcePath, request, headers);
     }
 
+    # Gets products associated with the account and the available permission profiles.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + headers - Headers to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function get v2\.1/organizations/[string organizationId]/accounts/[string accountId]/products/permission_profiles(map<string|string[]> headers = {}) returns ProductPermissionProfilesResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/products/permission_profiles`;
         return self.clientEp->get(resourcePath, headers);
     }
 
+    # Retrieves a user's product permission profiles by user ID.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + userId - The user ID GUID
+    # + headers - Headers to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function get v2\.1/organizations/[string organizationId]/accounts/[string accountId]/products/users/[string userId]/permission_profiles(map<string|string[]> headers = {}) returns ProductPermissionProfilesResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/products/users/${getEncodedUri(userId)}/permission_profiles`;
         return self.clientEp->get(resourcePath, headers);
     }
 
+    # Assigns permission profiles for a user by user ID.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + userId - The user ID GUID
+    # + headers - Headers to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function post v2\.1/organizations/[string organizationId]/accounts/[string accountId]/products/users/[string userId]/permission_profiles(ProductPermissionProfilesRequest payload, map<string|string[]> headers = {}) returns UserProductPermissionProfilesResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/products/users/${getEncodedUri(userId)}/permission_profiles`;
         http:Request request = new;
@@ -554,6 +623,12 @@ public isolated client class Client {
         return self.clientEp->post(resourcePath, request, headers);
     }
 
+    # Creates and updates a multi-product user.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + headers - Headers to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function post v2\.1/organizations/[string organizationId]/accounts/[string accountId]/users(NewMultiProductUserAddRequest payload, map<string|string[]> headers = {}) returns AddUserResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/users`;
         http:Request request = new;
@@ -562,18 +637,37 @@ public isolated client class Client {
         return self.clientEp->post(resourcePath, request, headers);
     }
 
+    # Retrieves the DS profile for a user specified by email address.
+    #
+    # + organizationId - The organization's GUID
+    # + headers - Headers to be sent with the request 
+    # + queries - Queries to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function get v2\.1/organizations/[string organizationId]/users/dsprofile(map<string|string[]> headers = {}, *OrganizationUserOrganizationUsersGetDSProfilesQueries queries) returns UsersDrilldownResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/users/dsprofile`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
     }
 
+    # Retrieves the DS profile for a user specified by ID.
+    #
+    # + organizationId - The organization's GUID
+    # + userId - The user ID GUID
+    # + headers - Headers to be sent with the request 
+    # + queries - Queries to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function get v2\.1/organizations/[string organizationId]/users/[string userId]/dsprofile(map<string|string[]> headers = {}, *OrganizationUserOrganizationUsersGetDSProfileByUserIdQueries queries) returns UsersDrilldownResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/users/${getEncodedUri(userId)}/dsprofile`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
     }
 
+    # Revokes a user's access to one or more products.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + headers - Headers to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function delete v2\.1/organizations/[string organizationId]/accounts/[string accountId]/products/users(UserProductProfileDeleteRequest payload, map<string|string[]> headers = {}) returns RemoveUserProductsResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/products/users`;
         http:Request request = new;
@@ -582,12 +676,25 @@ public isolated client class Client {
         return self.clientEp->delete(resourcePath, request, headers);
     }
 
+    # Retrieves a user's product permission profiles by email address.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + headers - Headers to be sent with the request 
+    # + queries - Queries to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function get v2\.1/organizations/[string organizationId]/accounts/[string accountId]/products/permission_profiles/users(map<string|string[]> headers = {}, *OrganizationProductPermissionProfileGetUserProductPermissionProfilesByEmailQueries queries) returns UserProductPermissionProfilesResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/products/permission_profiles/users`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
     }
 
+    # Assigns permission profiles for a user by email address.
+    #
+    # + organizationId - The organization's GUID
+    # + accountId - The account ID GUID
+    # + headers - Headers to be sent with the request 
+    # + return - A successful response or an error 
     resource isolated function post v2\.1/organizations/[string organizationId]/accounts/[string accountId]/products/permission_profiles/users(UserProductPermissionProfilesRequest payload, map<string|string[]> headers = {}) returns UserProductPermissionProfilesResponse|error {
         string resourcePath = string `/v2.1/organizations/${getEncodedUri(organizationId)}/accounts/${getEncodedUri(accountId)}/products/permission_profiles/users`;
         http:Request request = new;

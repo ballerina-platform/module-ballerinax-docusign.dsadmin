@@ -23,12 +23,10 @@ public type DeleteMembershipsRequest record {
     DeleteMembershipRequest[] accounts;
 };
 
-# 
 public type AddUserResponse record {
     # The full name of the user
     @jsondata:Name {value: "user_name"}
     string userName?;
-    # 
     @jsondata:Name {value: "site_id"}
     int:Signed32 siteId?;
     # The user's last name
@@ -51,9 +49,7 @@ public type AddUserResponse record {
     #   * Spanish: `es`
     @jsondata:Name {value: "language_culture"}
     string languageCulture?;
-    # 
     string id?;
-    # 
     AddUserResponseAccountProperties[] accounts?;
     # The user's federated status. One of:
     # 
@@ -70,12 +66,9 @@ public type AddUserResponse record {
     string email?;
 };
 
-# 
 public type DSGroupAddRequest record {
-    # 
     @jsondata:Name {value: "group_name"}
     string groupName;
-    # 
     string description?;
 };
 
@@ -104,7 +97,6 @@ public type NewUserResponseAccountProperties record {
     string jobTitle?;
 };
 
-# 
 public type UserProductProfileDeleteRequest record {
     # The user's email address
     @jsondata:Name {value: "user_email"}
@@ -121,7 +113,6 @@ public type UserProductProfileDeleteRequest record {
     string userId?;
 };
 
-# 
 public type IndividualUserDataRedactionRequest record {
     # The ID of the user whose data you want to delete
     @jsondata:Name {value: "user_id"}
@@ -130,7 +121,6 @@ public type IndividualUserDataRedactionRequest record {
     MembershipDataRedactionRequest[] memberships?;
 };
 
-# 
 public type ProductPermissionProfilesRequest record {
     # A list of one or more products and their respective permissions
     @jsondata:Name {value: "product_permission_profiles"}
@@ -205,12 +195,9 @@ public type DeleteMembershipResponse record {
     string id?;
 };
 
-# 
 public type AddDSGroupUsersResponse record {
-    # 
     @jsondata:Name {value: "TotalCount"}
     int:Signed32 totalCount?;
-    # 
     @jsondata:Name {value: "is_success"}
     boolean isSuccess?;
     # A list of users
@@ -256,9 +243,7 @@ public type OrganizationsResponse record {
 
 # Enables you to specify the kind of export request
 public type OrganizationExportRequest record {
-    # 
     OrganizationExportDomain[] domains?;
-    # 
     OrganizationExportAccount[] accounts?;
     # The type of export requested. One of:
     # 
@@ -283,7 +268,6 @@ public type DeleteMembershipsResponse record {
     DeleteMembershipResponse[] accounts?;
 };
 
-# 
 public type OrganizationExportTaskResponse record {
     # The size of the response in bytes
     @jsondata:Name {value: "size_bytes"}
@@ -315,7 +299,6 @@ public type UserUpdateResponse record {
     string email?;
 };
 
-# 
 public type MembershipDataRedactionRequest record {
     # The ID of the account from which to delete the user's data
     @jsondata:Name {value: "account_id"}
@@ -385,29 +368,21 @@ public type OrganizationSimpleIdObject record {
     string id?;
 };
 
-# 
 public type OrganizationAccountSettingsImportResultResponse record {
     @jsondata:Name {value: "error_details"}
     OASIRRErrorDetails errorDetails?;
-    # 
     @jsondata:Name {value: "processing_issues_by_account"}
     OASIRROrganizationAccountSettingsErrorDataResponse[] processingIssuesByAccount?;
-    # 
     @jsondata:Name {value: "site_id"}
     int:Signed32 siteId?;
-    # 
     @jsondata:Name {value: "number_processed_accounts"}
     int numberProcessedAccounts?;
-    # 
     string id?;
-    # 
     string url?;
-    # 
     @jsondata:Name {value: "number_unprocessed_accounts"}
     int numberUnprocessedAccounts?;
 };
 
-# 
 public type UserProductPermissionProfilesRequest record {
     # A list of one or more products and their associated permissions
     @jsondata:Name {value: "product_permission_profiles"}
@@ -465,7 +440,6 @@ public type NewUserRequest record {
     string firstName?;
     # The email address
     string email;
-    # 
     @jsondata:Name {value: "selected_languages"}
     string selectedLanguages?;
 };
@@ -528,7 +502,6 @@ public type OrganizationUsersResponse record {
     OrganizationUserResponse[] users?;
 };
 
-# 
 public type PermissionProfileResponse21 record {
     # The ID of the permission profile
     @jsondata:Name {value: "permission_profile_id"}
@@ -538,7 +511,6 @@ public type PermissionProfileResponse21 record {
     string permissionProfileName?;
 };
 
-# 
 public type UserProductPermissionProfilesResponse record {
     # The ID of the account
     @jsondata:Name {value: "account_id"}
@@ -551,7 +523,6 @@ public type UserProductPermissionProfilesResponse record {
     ProductPermissionProfileResponse[] productPermissionProfiles?;
 };
 
-# 
 public type DSGroupAndUsersResponse record {
     @jsondata:Name {value: "group_users"}
     DSGroupUsersResponse groupUsers?;
@@ -580,55 +551,41 @@ public type ErrorDetails record {
     string 'error?;
 };
 
-# 
 public type DSGroupResponse record {
-    # 
     @jsondata:Name {value: "is_admin"}
     boolean isAdmin?;
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified
     @jsondata:Name {value: "account_id"}
     string accountId?;
-    # 
     @jsondata:Name {value: "last_modified_on"}
     string lastModifiedOn?;
-    # 
     @jsondata:Name {value: "user_count"}
     int:Signed32 userCount?;
-    # 
     @jsondata:Name {value: "external_account_id"}
     int externalAccountId?;
-    # 
     @jsondata:Name {value: "group_id"}
     string groupId?;
-    # 
     @jsondata:Name {value: "group_name"}
     string groupName?;
-    # 
     @jsondata:Name {value: "account_name"}
     string accountName?;
-    # 
     string description?;
-    # 
     @jsondata:Name {value: "ds_group_id"}
     string dsGroupId?;
-    # 
     @jsondata:Name {value: "source_product_name"}
     string sourceProductName?;
 };
 
-# 
 public type OrganizationExportAccount record {
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified
     @jsondata:Name {value: "account_id"}
     string accountId?;
 };
 
-# 
 public type DSGroupUserResponse record {
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified
     @jsondata:Name {value: "account_id"}
     string accountId?;
-    # 
     @jsondata:Name {value: "user_id"}
     string userId?;
     @jsondata:Name {value: "error_details"}
@@ -639,7 +596,6 @@ public type DSGroupUserResponse record {
     # The user's last name
     @jsondata:Name {value: "last_name"}
     string lastName?;
-    # 
     @jsondata:Name {value: "middle_name"}
     string middleName?;
     # The user's first name
@@ -649,7 +605,6 @@ public type DSGroupUserResponse record {
     string status?;
 };
 
-# 
 public type OASIRRErrorDetails record {
     # A longer description of the error
     @jsondata:Name {value: "error_description"}
@@ -685,7 +640,6 @@ public type DomainResponse record {
     string txtToken?;
 };
 
-# 
 public type OETRErrorDetails record {
     # A longer description of the error
     @jsondata:Name {value: "error_description"}
@@ -694,90 +648,63 @@ public type OETRErrorDetails record {
     string 'error?;
 };
 
-# 
 public type OrganizationImportResponse record {
-    # 
     string 'type?;
-    # 
     @jsondata:Name {value: "error_count"}
     int:Signed32 errorCount?;
-    # 
     @jsondata:Name {value: "user_level_warning_rollups"}
     OrganizationImportResponseWarningRollup[] userLevelWarningRollups?;
-    # 
     @jsondata:Name {value: "imports_timed_out_for_accounts"}
     string importsTimedOutForAccounts?;
-    # 
     string id?;
-    # 
     @jsondata:Name {value: "user_level_error_rollups"}
     OrganizationImportResponseErrorRollup[] userLevelErrorRollups?;
-    # 
     @jsondata:Name {value: "last_modified"}
     string lastModified?;
-    # 
     @jsondata:Name {value: "updated_user_count"}
     int:Signed32 updatedUserCount?;
-    # 
     @jsondata:Name {value: "imports_timed_out_for_sites"}
     string importsTimedOutForSites?;
-    # 
     string created?;
-    # 
     @jsondata:Name {value: "imports_failed_for_accounts"}
     string importsFailedForAccounts?;
-    # 
     @jsondata:Name {value: "no_action_required_user_count"}
     int:Signed32 noActionRequiredUserCount?;
-    # 
     @jsondata:Name {value: "closed_user_count"}
     int:Signed32 closedUserCount?;
-    # 
     @jsondata:Name {value: "invalid_column_headers"}
     string invalidColumnHeaders?;
-    # 
     @jsondata:Name {value: "file_level_error_rollups"}
     OrganizationImportResponseErrorRollup[] fileLevelErrorRollups?;
-    # 
     @jsondata:Name {value: "processed_user_count"}
     int:Signed32 processedUserCount?;
     OrganizationImportResponseRequestor requestor?;
-    # 
     @jsondata:Name {value: "results_uri"}
     string resultsUri?;
-    # 
     @jsondata:Name {value: "imports_failed_for_sites"}
     string importsFailedForSites?;
-    # 
     @jsondata:Name {value: "has_csv_results"}
     boolean hasCsvResults?;
-    # 
     @jsondata:Name {value: "user_count"}
     int:Signed32 userCount?;
-    # 
     @jsondata:Name {value: "imports_not_found_or_not_available_for_accounts"}
     string importsNotFoundOrNotAvailableForAccounts?;
-    # 
     @jsondata:Name {value: "imports_not_found_or_not_available_for_sites"}
     string importsNotFoundOrNotAvailableForSites?;
-    # 
     @jsondata:Name {value: "warning_count"}
     int:Signed32 warningCount?;
-    # 
     @jsondata:Name {value: "added_user_count"}
     int:Signed32 addedUserCount?;
     # Status
     string status?;
 };
 
-# 
 public type OrganizationAccountRequest record {
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified
     @jsondata:Name {value: "account_id"}
     string accountId;
 };
 
-# 
 public type RemoveUserProductsResponse record {
     # The user's email address
     @jsondata:Name {value: "user_email"}
@@ -820,7 +747,6 @@ public type OrganizationUserOrganizationUsersGetProfileV2Queries record {
     string email?;
 };
 
-# 
 public type AssetGroupAccountResponse record {
     # The ID of the account
     string accountId?;
@@ -864,7 +790,6 @@ public type OrganizationProvisionAssetGroupGetAssetGroupAccountsByOrgQueries rec
     boolean compliant?;
 };
 
-# 
 public type CloneErrorDetails record {
     # The error description
     string errorDescription?;
@@ -907,9 +832,7 @@ public type MembershipResponse record {
     string status?;
 };
 
-# 
 public type DSGroupUsersResponse record {
-    # 
     @jsondata:Name {value: "total_count"}
     int:Signed32 totalCount?;
     # The page number
@@ -927,7 +850,6 @@ public type AssetGroupAccountsResponse record {
     AssetGroupAccountResponse[] assetGroupAccounts?;
 };
 
-# 
 public type PagingResponseProperties record {
     # The index position of the first result in this set
     @jsondata:Name {value: "result_set_start_position"}
@@ -947,7 +869,6 @@ public type PagingResponseProperties record {
     int:Signed32 totalSetSize?;
 };
 
-# 
 public type OrganizationImportResponseRequestor record {
     # The name of the requestor
     string name?;
@@ -1036,12 +957,10 @@ public type UserDrilldownResponse record {
     # - `Evicted`
     @jsondata:Name {value: "federated_status"}
     string federatedStatus?;
-    # 
     @jsondata:Name {value: "device_verification_enabled"}
     boolean deviceVerificationEnabled?;
     # A list of organizations that have groups that the user is a member of
     MembershipResponse[] memberships?;
-    # 
     @jsondata:Name {value: "selected_languages"}
     string selectedLanguages?;
     # The site name of the account
@@ -1092,6 +1011,7 @@ public type AssetGroupAccountCloneTargetAccount record {
     string countryCode?;
     # The name of the target account. This property is required in the request body when cloning an account
     string name?;
+    # An object describing the administrator of the cloned account
     AssetGroupAccountCloneTargetAccountAdmin admin?;
     # The ID of the target account
     string id?;
@@ -1101,9 +1021,7 @@ public type AssetGroupAccountCloneTargetAccount record {
     string region?;
 };
 
-# 
 public type OrganizationAccountsRequest record {
-    # 
     OrganizationAccountRequest[] accounts?;
 };
 
@@ -1140,15 +1058,12 @@ public type UpdateUserEmailRequest record {
     string email;
 };
 
-# 
 public type ProductPermissionProfileResponse record {
-    # 
     @jsondata:Name {value: "error_message"}
     string errorMessage?;
     # The ID of the product
     @jsondata:Name {value: "product_id"}
     string productId?;
-    # 
     @jsondata:Name {value: "permission_profiles"}
     PermissionProfileResponse21[] permissionProfiles?;
     # The human-readable name of the product
@@ -1181,13 +1096,10 @@ public type DeleteUserIdentityRequest record {
     UserIdentityRequest[] identities;
 };
 
-# 
 public type OrganizationExportDomain record {
-    # 
     string domain?;
 };
 
-# 
 public type AddDSGroupAndUsersResponse record {
     @jsondata:Name {value: "group_users"}
     AddDSGroupUsersResponse groupUsers?;
@@ -1200,7 +1112,6 @@ public type BulkUsersAddBody1 record {
     record {byte[] fileContent; string fileName;} fileCsv;
 };
 
-# 
 public type IndividualMembershipDataRedactionRequest record {
     # The ID of the user whose data you want to delete
     @jsondata:Name {value: "user_id"}
@@ -1219,7 +1130,6 @@ public type OrganizationUserOrganizationUsersGetDSProfileByUserIdQueries record 
     boolean sort?;
 };
 
-# 
 public type IndividualUserDataRedactionResponse record {
     # The ID of the user
     @jsondata:Name {value: "user_id"}
@@ -1231,9 +1141,7 @@ public type IndividualUserDataRedactionResponse record {
     "unknown"|"pending"|"failure"|"success"|"already_redacted" status?;
 };
 
-# 
 public type DSGroupRequest record {
-    # 
     @jsondata:Name {value: "ds_group_id"}
     string dsGroupId;
 };
@@ -1248,7 +1156,6 @@ public type AccountAccountsGetGroupsV2Queries record {
     int:Signed32 end?;
 };
 
-# 
 public type OrganizationImportResponseWarningRollup record {
     # The number of warnings of this type
     int:Signed32 count?;
@@ -1257,7 +1164,6 @@ public type OrganizationImportResponseWarningRollup record {
     string warningType?;
 };
 
-# 
 public type OrganizationImportsResponse record {
     # A list of responses to user import requests
     OrganizationImportResponse[] imports?;
@@ -1314,7 +1220,6 @@ public type NewAccountUserRequest record {
     string firstName?;
     # The email address of the user
     string email;
-    # 
     @jsondata:Name {value: "selected_languages"}
     string selectedLanguages?;
 };
@@ -1446,13 +1351,9 @@ public type OrganizationResponse record {
     OrganizationAccountResponse[] accounts?;
 };
 
-# 
 public type OrganizationAccountSettingsImportRequestorResponse record {
-    # 
     string name?;
-    # 
     string id?;
-    # 
     string 'type?;
     # The email address
     string email?;
@@ -1492,12 +1393,10 @@ public type UpdateUserRequest record {
     # - `Evicted`
     @jsondata:Name {value: "federated_status"}
     string federatedStatus?;
-    # 
     @jsondata:Name {value: "device_verification_enabled"}
     boolean deviceVerificationEnabled?;
     # A list of group membership requests
     UpdateMembershipRequest[] memberships?;
-    # 
     @jsondata:Name {value: "selected_languages"}
     string selectedLanguages?;
     # The site ID
@@ -1532,16 +1431,13 @@ public type UpdateUserRequest record {
     string email?;
 };
 
-# 
 public type ProductPermissionProfilesResponse record {
     # A list of one or more products and their respective permissions
     @jsondata:Name {value: "product_permission_profiles"}
     ProductPermissionProfileResponse[] productPermissionProfiles?;
 };
 
-# 
 public type OrganizationExportsResponse record {
-    # 
     OrganizationExportResponse[] exports?;
 };
 
@@ -1565,6 +1461,7 @@ public type AssetGroupAccountClone record {
     string cloneRequestId?;
     # The date that the clone request was initiated
     string createdDate?;
+    # An object describing the target cloned account
     AssetGroupAccountCloneTargetAccount targetAccount;
     # The ID of the job that is created by the request. Use this value to retrieve information about the clone request with the [getAssetGroupAccountClone](/docs/admin-api/reference/accountprovisioning/accountcloning/getassetgroupaccountclone/) endpoint
     string assetGroupWorkId?;
@@ -1581,15 +1478,12 @@ public type AssetGroupAccountClone record {
     int:Signed32 attempts?;
 };
 
-# 
 public type DSGroupListResponse record {
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified
     @jsondata:Name {value: "account_id"}
     string accountId?;
-    # 
     @jsondata:Name {value: "ds_groups"}
     DSGroupResponse[] dsGroups?;
-    # 
     @jsondata:Name {value: "total_count"}
     int:Signed32 totalCount?;
     # The page number
@@ -1599,7 +1493,6 @@ public type DSGroupListResponse record {
     int:Signed32 pageSize?;
 };
 
-# 
 public type OrganizationExportResponse record {
     # The time and date when the request expires
     string expires?;
@@ -1623,13 +1516,11 @@ public type OrganizationExportResponse record {
     # - `organization_account_settings_export`: This value only applies to requests to export account settings
     string 'type?;
     OrganizationExportRequestorResponse requestor?;
-    # 
     @jsondata:Name {value: "selected_accounts"}
     OrgExportSelectedAccount[] selectedAccounts?;
     # An integer between 0 to 100 (inclusive) that reports the progress of the request
     @jsondata:Name {value: "percent_completed"}
     int:Signed32 percentCompleted?;
-    # 
     @jsondata:Name {value: "selected_domains"}
     OrgExportSelectedDomain[] selectedDomains?;
     # The number of rows returned in this request
@@ -1659,15 +1550,12 @@ public type BulkUsersUpdateBody record {
     record {byte[] fileContent; string fileName;} fileCsv;
 };
 
-# 
 public type DeleteMembershipRequest record {
     # The ID of a user's account you want to close
     string id;
 };
 
-# 
 public type IdentityProvidersResponse record {
-    # 
     @jsondata:Name {value: "identity_providers"}
     IdentityProviderResponse[] identityProviders?;
 };
@@ -1682,20 +1570,16 @@ public type OrganizationUserOrganizationUsersGetDSProfilesQueries record {
     string email?;
 };
 
-# 
 public type OASIRROrganizationAccountSettingsErrorDataResponse record {
-    # 
     @jsondata:Name {value: "error_key"}
     string errorKey?;
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified
     @jsondata:Name {value: "account_id"}
     string accountId?;
-    # 
     @jsondata:Name {value: "account_name"}
     string accountName?;
     # The error number
     string 'error?;
-    # 
     @jsondata:Name {value: "setting_key"}
     string settingKey?;
 };
@@ -1711,9 +1595,7 @@ public type OrganizationOrganizationGetListV2Queries record {
     string mode?;
 };
 
-# 
 public type AddUserResponseAccountProperties record {
-    # 
     @jsondata:Name {value: "ds_groups"}
     DSGroupResponse[] dsGroups?;
     # A list of one or more products and their respective permissions
@@ -1722,10 +1604,8 @@ public type AddUserResponseAccountProperties record {
     # The user's company name
     @jsondata:Name {value: "company_name"}
     string companyName?;
-    # 
     @jsondata:Name {value: "site_id"}
     int:Signed32 siteId?;
-    # 
     string id?;
     # The user's job title
     @jsondata:Name {value: "job_title"}
@@ -1738,9 +1618,7 @@ public type BulkUsersUpdateBody1 record {
     record {byte[] fileContent; string fileName;} fileCsv;
 };
 
-# 
 public type ForceActivateMembershipRequest record {
-    # 
     @jsondata:Name {value: "site_id"}
     int:Signed32 siteId;
 };
@@ -1762,7 +1640,6 @@ public type OAuth2RefreshTokenGrantConfig record {|
     string refreshUrl = "https://account.docusign.com/oauth/auth";
 |};
 
-# 
 public type AssetGroupAccountClones record {
     # The list of asset group accounts
     AssetGroupAccountClone[] assetGroupWorks?;
@@ -1782,16 +1659,13 @@ public type OrganizationAccountResponse record {
     string id?;
 };
 
-# 
 public type OrgExportSelectedAccount record {
     # Select users that are members of the specified account. At least one of `email`, `account_id` or `organization_reserved_domain_id` must be specified
     @jsondata:Name {value: "account_id"}
     string accountId?;
 };
 
-# 
 public type NewMultiProductUserAddRequest record {
-    # 
     @jsondata:Name {value: "ds_groups"}
     DSGroupRequest[] dsGroups?;
     # The full name of the user
@@ -1809,7 +1683,6 @@ public type NewMultiProductUserAddRequest record {
     # When **true,** the user's account is activated automatically
     @jsondata:Name {value: "auto_activate_memberships"}
     boolean autoActivateMemberships?;
-    # 
     @jsondata:Name {value: "default_account_id"}
     string defaultAccountId?;
     # The language and culture of the user.
@@ -1862,7 +1735,6 @@ public type CertificateResponse record {
     string issuer?;
 };
 
-# 
 public type OrganizationExportRequestorResponse record {
     # The name of the requestor
     string name?;
@@ -1878,7 +1750,6 @@ public type OrganizationExportRequestorResponse record {
     string email?;
 };
 
-# 
 public type AssetGroupAccountCloneSourceAccount record {
     # The site the source account is on
     string site?;
@@ -1890,7 +1761,6 @@ public type AssetGroupAccountCloneSourceAccount record {
     string id;
 };
 
-# 
 public type OrganizationImportResponseErrorRollup record {
     # The type of error. One of:
     # 
@@ -1951,40 +1821,26 @@ public type OrganizationImportResponseErrorRollup record {
     int:Signed32 count?;
 };
 
-# 
 public type OrganizationAccountSettingsImportResponse record {
-    # 
     @jsondata:Name {value: "skipped_settings_by_account"}
     record {|string[]...;|} skippedSettingsByAccount?;
-    # 
     string expires?;
-    # 
     string created?;
-    # 
     string completed?;
-    # 
     string 'type?;
-    # 
     @jsondata:Name {value: "number_unprocessed_accounts"}
     int numberUnprocessedAccounts?;
     OrganizationAccountSettingsImportRequestorResponse requestor?;
-    # 
     @jsondata:Name {value: "percent_completed"}
     int:Signed32 percentCompleted?;
-    # 
     boolean success?;
-    # 
     @jsondata:Name {value: "organization_id"}
     string organizationId?;
-    # 
     @jsondata:Name {value: "number_processed_accounts"}
     int numberProcessedAccounts?;
-    # 
     string id?;
-    # 
     @jsondata:Name {value: "last_modified"}
     string lastModified?;
-    # 
     OrganizationAccountSettingsImportResultResponse[] results?;
     # Status
     string status?;
@@ -2007,7 +1863,6 @@ public type OrganizationUserResponse record {
     # - `closed`
     @jsondata:Name {value: "user_status"}
     string userStatus?;
-    # 
     @jsondata:Name {value: "ds_groups"}
     DSGroupResponse[] dsGroups?;
     # The date the user's account was created
@@ -2019,7 +1874,6 @@ public type OrganizationUserResponse record {
     # The full name of the user
     @jsondata:Name {value: "user_name"}
     string userName?;
-    # 
     @jsondata:Name {value: "membership_id"}
     string membershipId?;
     # The user's last name
@@ -2043,9 +1897,7 @@ public type OrganizationUserResponse record {
     string email?;
 };
 
-# 
 public type DSGroupUsersAddRequest record {
-    # 
     @jsondata:Name {value: "user_ids"}
     string[] userIds;
 };
@@ -2073,18 +1925,13 @@ public type PermissionProfileRequest record {
     int id;
 };
 
-# 
 public type RemoveDSGroupUsersResponse record {
-    # 
     @jsondata:Name {value: "failed_users"}
     DSGroupUserResponse[] failedUsers?;
-    # 
     @jsondata:Name {value: "is_success"}
     boolean isSuccess?;
 };
 
-# 
 public type OrgExportSelectedDomain record {
-    # 
     string domain?;
 };
