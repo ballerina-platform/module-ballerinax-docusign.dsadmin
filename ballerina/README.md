@@ -1,8 +1,15 @@
-## Package overview
+## Overview
 
 [DocuSign](https://www.docusign.com) is a digital transaction management platform that enables users to securely sign, send, and manage documents electronically.
 
-The Ballerina DocuSign Admin connector integrates with the DocuSign platform, provides APIs to efficiently manages DocuSign users and permissions across all the accounts and domains within Ballerina applications. It supports [DocuSign Admin API V2](https://github.com/docusign/OpenAPI-Specifications/blob/master/admin.rest.swagger-v2.1.json).
+The DocuSign Admin connector integrates with the DocuSign platform, providing APIs to efficiently manage DocuSign users and permissions across all accounts and domains. It supports [DocuSign Admin API V2](https://github.com/docusign/OpenAPI-Specifications/blob/master/admin.rest.swagger-v2.1.json).
+
+### Key Features
+
+- Securely sign, send, and manage documents electronically
+- Efficiently manage DocuSign users and permissions
+- Support for DocuSign Admin API V2
+- Manage accounts and domains seamlessly
 
 ## Setup guide
 
@@ -52,7 +59,7 @@ In order to use the DocuSign Admin connector, you need to first create the DocuS
     --data-urlencode 'grant_type=authorization_code'
     ```
 
-    The response will contain your refresh token. Use `https://account-d.docusign.com/oauth/token` as the refresh URL.
+    The response will contain your refresh token. Use `https://account-d.docusign.com/oauth/token' as the refresh URL.
 
 Remember to replace `{IntegrationKey:SecretKey}`, `{iKey}`, `{redirectUri}`, `{encodedKey}`, and `{codeFromUrl}` with your actual values.
 
