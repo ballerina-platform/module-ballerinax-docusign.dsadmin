@@ -18,7 +18,7 @@
 
 plugins {
     id 'com.github.spotbugs-base'
-    id 'com.github.johnrengelman.shadow'
+    id 'com.gradleup.shadow'
     id 'de.undercouch.download'
     id 'net.researchgate.release'
 }
@@ -60,9 +60,16 @@ allprojects {
 
 def moduleVersion = project.version.replace("-SNAPSHOT", "")
 
-task build {
-    dependsOn(':docusign.dsadmin-ballerina:build')
-    dependsOn(':docusign.dsadmin-examples:build')
+if (tasks.names.contains('build')) {
+    tasks.named('build') {
+        dependsOn(':docusign.dsadmin-ballerina:build')
+        dependsOn(':docusign.dsadmin-examples:build')
+    }
+} else {
+    tasks.register('build') {
+        dependsOn(':docusign.dsadmin-ballerina:build')
+        dependsOn(':docusign.dsadmin-examples:build')
+    }
 }
 
 release {
